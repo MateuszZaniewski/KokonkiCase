@@ -1,22 +1,21 @@
-export default function ProductImages() {
-  const images = [
-    "https://i.ibb.co/S5b3LTM/image1.png",
-    "https://i.ibb.co/cJJkxMj/image2.png",
-    "https://i.ibb.co/9cH077h/image3.png",
-    "https://i.ibb.co/87cTnPY/image4.png",
-    "https://i.ibb.co/SKKmnq9/image5.png",
-  ];
-
-  return (
-    <div className="flex gap-5">
-      <div className="flex-col space-y-5">
-        {images.map((image) => (
-          <img key={image} src={image} className="h-24 w-24" />
-        ))}
+export default function ProductImages({ product }) {
+  if (product && product.length > 0 && product[0].images) {
+    return (
+      <div className="flex gap-5 xl:min-w-[674px]">
+        <div className="flex-col space-y-5">
+          {product[0].images.map((image) => (
+            <img key={image} src={image} className="h-24 w-24" />
+          ))}
+        </div>
+        <div>
+          <img
+            src={product[0].images[0]}
+            className="xl:h-[558px] xl:w-[558px]"
+          />
+        </div>
       </div>
-      <div>
-        <img src={images[0]} className="xl:h-[558px] xl:w-[558px]" />
-      </div>
-    </div>
-  );
+    );
+  } else {
+    return <div>Loading...</div>;
+  }
 }

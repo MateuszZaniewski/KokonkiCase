@@ -8,7 +8,7 @@ export default function Navbar() {
     <nav>
       <div className="flex justify-between items-center pt-2 ">
         <div className="xl:pl-14 xl:min-w-52 w-[25%]  ">
-          <div className="flex gap-2 items-center border-b border-b-black">
+          <div className="flex gap-2 items-center border-b border-b-black pb-1">
             <img src={searchIcon} className=" h-5 w-5" />
             <input
               placeholder="Szukaj"

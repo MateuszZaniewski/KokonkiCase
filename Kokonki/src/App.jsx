@@ -1,9 +1,7 @@
 import "./App.css";
-import { supabase } from "./config/supabaseClient";
 
 function App() {
-  console.log(supabase);
-  return <div className=" bg-red-400 text-3xl">Hello</div>;
+  return <div className=" bg-red-400 text-3xl">Hello App Js</div>;
 }
 
 export default App;
