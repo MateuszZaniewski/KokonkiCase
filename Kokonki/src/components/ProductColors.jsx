@@ -1,7 +1,6 @@
 import Color from "./Boxes/Color";
 
 export default function ProductColors({ colors }) {
-  console.log(colors);
   return (
     <div>
       <div className="flex xl:gap-40 pt-7">

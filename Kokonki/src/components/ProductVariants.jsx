@@ -1,11 +1,13 @@
 import Promotion from "./Boxes/Promotion";
 import Star from "./Boxes/Star";
 import shareIcon from "../assets/share.svg";
+import truckIcon from "../assets/truck.svg";
 // import redHeartFillIcon from "../assets/redHeart-fill.svg";
 import redHeartEmptyIcon from "../assets/redHeart-empty.svg";
 import Prices from "./Boxes/Prices";
 import ProductColors from "./ProductColors";
 import Count from "./Boxes/Count";
+import CtaButton from "./Boxes/CtaButton";
 
 export default function ProductVariants({ product }) {
   if (product && product.length > 0) {
@@ -28,6 +30,11 @@ export default function ProductVariants({ product }) {
         />
         <ProductColors colors={product[0].colors} />
         <Count />
+        <CtaButton text="Dodaj do koszyka" background={true} />
+        <div className="flex gap-1 py-7">
+          <img src={truckIcon} />
+          <span>Darmowa dostawa od 200 zł</span>
+        </div>
       </div>
     );
   }

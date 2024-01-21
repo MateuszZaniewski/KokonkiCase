@@ -1,5 +1,4 @@
 export default function Prices({ priceNow, priceLast, priceMonth }) {
-  console.log(priceNow, priceLast, priceMonth);
   return (
     <div>
       <div className="flex xl:gap-9">
