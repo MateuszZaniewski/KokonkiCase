@@ -17,9 +17,17 @@ export default function ProductInformation({
           setVisiblePage={setVisiblePage}
           product={product}
         />
-        <Details visiblePage={visiblePage} setVisiblePage={setVisiblePage} />
+        <Details
+          visiblePage={visiblePage}
+          setVisiblePage={setVisiblePage}
+          product={product}
+        />
         <Delivery visiblePage={visiblePage} setVisiblePage={setVisiblePage} />
-        <Patterns visiblePage={visiblePage} setVisiblePage={setVisiblePage} />
+        <Patterns
+          visiblePage={visiblePage}
+          setVisiblePage={setVisiblePage}
+          product={product}
+        />
       </div>
     );
   }
