@@ -3,6 +3,7 @@ import ProductVariants from "./ProductVariants";
 import { supabase } from "../config/supabaseClient";
 import { useEffect, useState } from "react";
 import ProductInformation from "./ProductInformation";
+import ProductRelated from "./ProductRelated";
 
 export default function ProductOverview() {
   const [productName, setProductName] = useState("Drops Nepal");
@@ -38,6 +39,9 @@ export default function ProductOverview() {
             visiblePage={visiblePage}
             setVisiblePage={setVisiblePage}
           />
+        </div>
+        <div>
+          <ProductRelated product={product} />
         </div>
       </div>
     );

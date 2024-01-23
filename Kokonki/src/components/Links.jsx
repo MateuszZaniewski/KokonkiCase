@@ -6,16 +6,16 @@ export default function Links() {
       <Link to={"/nowosci"} className="">
         Nowości
       </Link>
-      <Link to={"wloczki"} className="">
+      <Link to={"/wloczki"} className="">
         Włóczki
       </Link>
-      <Link to={"akcesoria"} className="">
+      <Link to={"/akcesoria"} className="">
         Akcesoria
       </Link>
-      <Link to={"promocje"} className="">
+      <Link to={"/promocje"} className="">
         Promocje
       </Link>
-      <Link to={"blog"} className="">
+      <Link to={"/blog"} className="">
         Blog
       </Link>
     </div>

@@ -8,10 +8,9 @@ export default function ProductInformation({
   visiblePage,
   setVisiblePage,
 }) {
-  console.log(product);
   if (product && product.length > 0) {
     return (
-      <div className="pl-44 flex-col xl:max-w-[538px]">
+      <div className="pl-44 flex-col xl:max-w-[538px] xl:pt-16 xl:pb-24">
         <Info
           visiblePage={visiblePage}
           setVisiblePage={setVisiblePage}

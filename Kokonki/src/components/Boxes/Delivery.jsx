@@ -1,6 +1,15 @@
 import arrowUpIcon from "../../assets/arrow-up.svg";
 import arrowDownIcon from "../../assets/arrow-down.svg";
 export default function Delivery({ visiblePage, setVisiblePage }) {
+  const PricedDelivery = ({ operator, time }) => {
+    return (
+      <div className="pb-2">
+        <p className="pb-1">{operator}</p>
+        <p className="text-[#554A4A]">{time}</p>
+      </div>
+    );
+  };
+
   return (
     <div
       onClick={() => setVisiblePage(3)}
@@ -15,26 +24,27 @@ export default function Delivery({ visiblePage, setVisiblePage }) {
 
       <div className={`${visiblePage === 3 ? "block" : "hidden"} pt-3 pl-5`}>
         <h2 className="font-bold pt-5 pb-3">Formy dostawy</h2>
-        <div className="pb-2">
-          <p className="pb-1">Poczta Polska odbiór w punkcie - 8,90 zł</p>
-          <p className="text-[#554A4A]">2-5 dni roboczych</p>
-        </div>
-        <div className="pb-2">
-          <p className="pb-1">Poczta Polska - 9,90 zł</p>
-          <p className="text-[#554A4A]">2-5 dni roboczych</p>
-        </div>
-        <div className="pb-2">
-          <p className="pb-1">InPost Paczkomaty 24/7 - 12,90 zł</p>
-          <p className="text-[#554A4A]">1-2 dni roboczych</p>
-        </div>
-        <div className="pb-2">
-          <p className="pb-1">Kurier InPost - 13,90 zł</p>
-          <p className="text-[#554A4A]">1-2 dni roboczych</p>
-        </div>
-        <div className="pb-2">
-          <p className="pb-1">Kurier DPD - 14,90 zł</p>
-          <p className="text-[#554A4A]">1-2 dni roboczych</p>
-        </div>
+        <PricedDelivery
+          operator="Poczta Polska odbiór w punkcie - 8,90 zł"
+          time="2-5 dni roboczych"
+        />
+        <PricedDelivery
+          operator="Poczta Polska - 9,90 zł"
+          time="2-5 dni roboczych"
+        />
+        <PricedDelivery
+          operator="InPost Paczkomaty 24/7 - 12,90 zł"
+          time="1-2 dni roboczych"
+        />
+        <PricedDelivery
+          operator="Kurier InPost - 13,90 zł"
+          time="1-2 dni roboczych"
+        />
+        <PricedDelivery
+          operator="Kurier DPD - 14,90 zł"
+          time="1-2 dni roboczych"
+        />
+
         <div className="pb-2">
           <p className="pb-1">Odbiór osobisty - 0,00 zł</p>
           <p className="text-[#554A4A]">Punkt odbioru: </p>
