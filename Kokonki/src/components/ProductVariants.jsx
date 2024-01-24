@@ -30,7 +30,11 @@ export default function ProductVariants({ product }) {
         />
         <ProductColors colors={product[0].colors} />
         <Count />
-        <CtaButton text="Dodaj do koszyka" background={true} />
+        <CtaButton
+          text="Dodaj do koszyka"
+          background={true}
+          color="text-[#FFFFFF]"
+        />
         <div className="flex gap-1 py-7">
           <img src={truckIcon} />
           <span>Darmowa dostawa od 200 zł</span>

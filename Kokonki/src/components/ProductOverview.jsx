@@ -4,6 +4,7 @@ import { supabase } from "../config/supabaseClient";
 import { useEffect, useState } from "react";
 import ProductInformation from "./ProductInformation";
 import ProductRelated from "./ProductRelated";
+import ProductOpinions from "./ProductOpinions";
 
 export default function ProductOverview() {
   const [productName, setProductName] = useState("Drops Nepal");
@@ -42,6 +43,9 @@ export default function ProductOverview() {
         </div>
         <div>
           <ProductRelated product={product} />
+        </div>
+        <div>
+          <ProductOpinions product={product} />
         </div>
       </div>
     );

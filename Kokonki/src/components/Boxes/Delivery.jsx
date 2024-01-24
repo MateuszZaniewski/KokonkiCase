@@ -3,7 +3,7 @@ import arrowDownIcon from "../../assets/arrow-down.svg";
 export default function Delivery({ visiblePage, setVisiblePage }) {
   const PricedDelivery = ({ operator, time }) => {
     return (
-      <div className="pb-2">
+      <div className="pb-3">
         <p className="pb-1">{operator}</p>
         <p className="text-[#554A4A]">{time}</p>
       </div>
