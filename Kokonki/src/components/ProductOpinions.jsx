@@ -1,4 +1,3 @@
-import Opinion from "./Boxes/Opinion";
 import Pagination from "./Boxes/Pagination";
 import Star from "./Boxes/Star";
 export default function ProductOpinions({ product }) {
@@ -41,12 +40,7 @@ export default function ProductOpinions({ product }) {
 
         <div className="w-1/2 pr-14">
           <div>
-            {product[0].opinions.map((opinion, index) => {
-              if (index < 4) {
-                return <Opinion key={index} value={opinion} />;
-              }
-            })}
-            <Pagination />
+            <Pagination opinions={product[0].opinions} />
           </div>
         </div>
       </div>

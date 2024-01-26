@@ -5,7 +5,7 @@ import trustIcon from "../../assets/trustMate.png";
 export default function Opinion({ value }) {
   console.log(value);
   return (
-    <div className="flex xl:px-10 xl:py-14 border-t-2 border-black ">
+    <div className="flex xl:px-10 xl:py-14 border-b-2 border-black ">
       <div className="w-1/4">
         {value.image.length > 0 ? (
           <img className="xl:w-[160px] xl:h-[160px]" src={value.image} />

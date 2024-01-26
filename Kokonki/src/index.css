@@ -13,3 +13,30 @@ input::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
+
+.page-item {
+  width: 29px;
+  height: 29px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.active {
+  background-color: #f7c592;
+  width: 29px;
+  height: 29px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px #821232, 0 0 0 8px #2a4746;
+}
+
+.page-prev {
+  padding-right: 10px;
+}
+
+.page-next {
+  padding-left: 10px;
+}
