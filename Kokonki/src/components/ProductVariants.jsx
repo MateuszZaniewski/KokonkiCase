@@ -32,7 +32,7 @@ export default function ProductVariants({ product }) {
         <Count />
         <CtaButton
           text="Dodaj do koszyka"
-          background={true}
+          background="bg-[#2A4746]"
           color="text-[#FFFFFF]"
         />
         <div className="flex gap-1 py-7">

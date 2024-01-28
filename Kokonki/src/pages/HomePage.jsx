@@ -1,5 +1,7 @@
 import Links from "../components/Links";
 import Navbar from "../components/Navbar";
+import Newsletter from "../components/Newsletter";
+import ObserverInsta from "../components/ObserverInsta";
 import ProductOverview from "../components/ProductOverview";
 
 export default function HomePage() {
@@ -8,6 +10,8 @@ export default function HomePage() {
       <Navbar />
       <Links />
       <ProductOverview />
+      <Newsletter />
+      <ObserverInsta />
     </div>
   );
 }
