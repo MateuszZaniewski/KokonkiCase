@@ -1,3 +1,4 @@
+import Footer from "../components/Footer";
 import Links from "../components/Links";
 import Navbar from "../components/Navbar";
 import Newsletter from "../components/Newsletter";
@@ -12,6 +13,7 @@ export default function HomePage() {
       <ProductOverview />
       <Newsletter />
       <ObserverInsta />
+      <Footer />
     </div>
   );
 }

@@ -30,11 +30,13 @@ export default function ProductOverview() {
   if (product) {
     return (
       <div className="flex-col">
-        <div className="flex pt-28 px-14 gap-24">
+        <div className="flex pt-28 px-14 gap-24 relative">
           <ProductImages product={product} />
+          {/* Popracować nad fixed position */}
+
           <ProductVariants product={product} />
         </div>
-        <div className="w-full">
+        <div className="w-1/2">
           <ProductInformation
             product={product}
             visiblePage={visiblePage}
