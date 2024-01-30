@@ -2,14 +2,16 @@ import Promotion from "./Boxes/Promotion";
 import Star from "./Boxes/Star";
 import shareIcon from "../assets/share.svg";
 import truckIcon from "../assets/truck.svg";
-// import redHeartFillIcon from "../assets/redHeart-fill.svg";
+import redHeartFillIcon from "../assets/redHeart-fill.svg";
 import redHeartEmptyIcon from "../assets/redHeart-empty.svg";
 import Prices from "./Boxes/Prices";
 import ProductColors from "./ProductColors";
 import Count from "./Boxes/Count";
 import CtaButton from "./Boxes/CtaButton";
+import { useState } from "react";
 
 export default function ProductVariants({ product }) {
+  const [favourite, setFavourite] = useState(false);
   if (product && product.length > 0) {
     return (
       <div className="w-full">
@@ -18,8 +20,12 @@ export default function ProductVariants({ product }) {
         <div className="flex justify-between">
           <div className="xl:text-[39px]">{product[0].name}</div>
           <div className="flex xl:gap-4">
-            <img src={shareIcon} />
-            <img src={redHeartEmptyIcon} />
+            <img src={shareIcon} className="cursor-pointer hover:scale-110" />
+            <img
+              src={favourite ? redHeartFillIcon : redHeartEmptyIcon}
+              onClick={() => setFavourite(!favourite)}
+              className="cursor-pointer hover:scale-110"
+            />
           </div>
         </div>
         <Star rating={product[0].rating} />

@@ -3,7 +3,7 @@ import arrowDownIcon from "../../assets/arrow-down.svg";
 export default function Patterns({ visiblePage, setVisiblePage, product }) {
   return (
     <div onClick={() => setVisiblePage(4)} className="xl:w-[538px] py-4">
-      <div className="flex justify-between">
+      <div className="flex justify-between cursor-pointer">
         <span className="uppercase xl:text-[13px] font-bold">
           Wzory dla włóczki
         </span>

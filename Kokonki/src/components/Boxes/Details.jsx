@@ -7,7 +7,7 @@ export default function Details({ visiblePage, setVisiblePage, product }) {
       onClick={() => setVisiblePage(2)}
       className="xl:w-[538px] border-b-2 border-black py-4"
     >
-      <div className="flex justify-between">
+      <div className="flex justify-between cursor-pointer">
         <span className="uppercase xl:text-[13px] font-bold">Szczególy</span>
         <img src={visiblePage === 2 ? arrowUpIcon : arrowDownIcon} />
       </div>

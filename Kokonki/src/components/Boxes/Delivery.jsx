@@ -15,7 +15,7 @@ export default function Delivery({ visiblePage, setVisiblePage }) {
       onClick={() => setVisiblePage(3)}
       className="xl:w-[538px] border-b-2 border-black py-4"
     >
-      <div className="flex justify-between">
+      <div className="flex justify-between cursor-pointer">
         <span className="uppercase xl:text-[13px] font-bold">
           Dostawa i zwroty
         </span>

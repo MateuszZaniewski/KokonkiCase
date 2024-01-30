@@ -15,7 +15,7 @@ export default function Newsletter() {
           Skorzystaj ze zniżki 10%
         </h3>
         <input
-          className=" placeholder:text-[#58595B] text-center bg-transparent border-b border-black xl:pb-3 xl:min-w-[460px] placeholder:text-center"
+          className=" placeholder:text-[#58595B] text-center bg-transparent border-b border-black xl:pb-3 xl:min-w-[460px] placeholder:text-center outline-none"
           placeholder="Wpisz swój adres mailowy"
           type="email"
         ></input>

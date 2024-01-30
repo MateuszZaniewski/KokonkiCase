@@ -2,15 +2,12 @@ import Pagination from "./Boxes/Pagination";
 import Star from "./Boxes/Star";
 export default function ProductOpinions({ product }) {
   if (product && product.length > 0) {
-    console.log(product[0].opinions);
-
     const rating = product[0].opinions.map((opinion) => {
       let summary = 0;
       summary += opinion.rate;
       return summary;
     });
 
-    console.log(rating.reduce((a, b) => a + b) / product[0].opinions.length);
     return (
       <div className="flex xl:pl-14 xl:pb-11 xl:pt-16">
         <div className=" w-1/2">
@@ -30,7 +27,7 @@ export default function ProductOpinions({ product }) {
             </div>
             <div>
               <button
-                className={`border-2 border-[#2A4746] rounded-full px-7 py-2 w-fit`}
+                className={`border-2 border-[#2A4746] rounded-full px-7 py-2 w-fit hover:bg-[#2A4746] hover:text-white`}
               >
                 Dodaj opinię
               </button>

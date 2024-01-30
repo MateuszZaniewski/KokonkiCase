@@ -3,7 +3,6 @@ import checkIcon from "../../assets/check.svg";
 import trustIcon from "../../assets/trustMate.png";
 
 export default function Opinion({ value }) {
-  console.log(value);
   return (
     <div className="flex xl:px-10 xl:py-14 border-b-2 border-black ">
       <div className="w-1/4">

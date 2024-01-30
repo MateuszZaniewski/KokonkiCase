@@ -3,10 +3,15 @@ export default function Color({ color }) {
     width: "29px",
     height: "29px",
     borderRadius: "50%",
-    border: "1px solid lightgray", // Add your border styles
-    backgroundColor: color || "transparent", // Fallback to transparent if color is not provided
+    border: "1px solid lightgray",
+    backgroundColor: color || "transparent",
   };
   if (color) {
-    return <div style={containerStyle}></div>;
+    return (
+      <div
+        style={containerStyle}
+        className=" hover:scale-110 hover:border-2 hover:border-black cursor-pointer"
+      ></div>
+    );
   }
 }

@@ -1,10 +1,16 @@
+import { Link } from "react-router-dom";
 export default function ObserverInsta() {
   return (
     <div className="text-[#222220] flex xl:px-[122px] xl:pb-10">
       <div className="flex text-center justify-center items-center pr-24">
         <div>
           <h2 className="xl:text-[25px]">Obserwuj nas na Instagramie</h2>
-          <span className="xl:text-[49px]">@kokonki.pl</span>
+          <Link
+            to={"https://www.instagram.com/kokonki.motki/"}
+            className="xl:text-[49px]"
+          >
+            @kokonki.pl
+          </Link>
         </div>
       </div>
       <div className="grid grid-cols-6 grid-rows-5 gap-5 xl:w-[720px] xl:h-[540px]">
