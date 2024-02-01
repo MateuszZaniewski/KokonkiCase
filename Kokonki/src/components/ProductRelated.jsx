@@ -11,7 +11,7 @@ export default function ProductRelated({ product }) {
         <div className="flex xl:gap-14 justify-center">
           {product[0].related.map((item) => {
             return (
-              <div key={item.image} className=" relative">
+              <div key={item.image} className=" relative cursor-pointer">
                 {item.promotion && (
                   <div className="absolute top-2 left-2">
                     <Promotion text="Promocja" visible={item.promotion} />

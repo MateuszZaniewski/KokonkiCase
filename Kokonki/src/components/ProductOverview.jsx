@@ -1,32 +1,14 @@
 import ProductImages from "./ProductImages";
 import ProductVariants from "./ProductVariants";
-import { supabase } from "../config/supabaseClient";
-import { useEffect, useState } from "react";
 import ProductInformation from "./ProductInformation";
 import ProductRelated from "./ProductRelated";
 import ProductOpinions from "./ProductOpinions";
 
-export default function ProductOverview() {
-  const [productName, setProductName] = useState("Drops Nepal");
-  const [product, setProduct] = useState([]);
-  const [visiblePage, setVisiblePage] = useState(1);
-  useEffect(() => {
-    const fetchData = async () => {
-      const { data, error } = await supabase
-        .from("resources")
-        .select()
-        .eq("name", productName);
-
-      if (error) {
-        console.log(error);
-      }
-      if (data) {
-        setProduct(data);
-      }
-    };
-    fetchData();
-  }, [productName]);
-
+export default function ProductOverview({
+  product,
+  visiblePage,
+  setVisiblePage,
+}) {
   if (product) {
     return (
       <div className="flex-col">

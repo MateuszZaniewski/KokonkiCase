@@ -11,7 +11,6 @@ export default function ProductImages({ product }) {
   }, [product]);
 
   if (product && product.length > 0 && product[0].images) {
-    console.log(activeImage);
     return (
       <div className="flex gap-5 xl:min-w-[674px]">
         <div className="flex-col space-y-5">

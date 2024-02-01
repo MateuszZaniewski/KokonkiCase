@@ -3,7 +3,8 @@ import heartFillIcon from "../assets/heart-fill.svg";
 import searchIcon from "../assets/search.svg";
 import userIcon from "../assets/user.svg";
 import logo from "../assets/logo.svg";
-export default function Navbar() {
+import QuickCart from "./QuickCart";
+export default function Navbar({ product, cart, setCart }) {
   return (
     <nav>
       <div className="flex justify-between items-center pt-2 ">
@@ -39,6 +40,9 @@ export default function Navbar() {
             />
             (0)
           </div>
+        </div>
+        <div className="absolute top-0 right-0 z-20">
+          <QuickCart product={product} cart={cart} setCart={setCart} />
         </div>
       </div>
     </nav>
