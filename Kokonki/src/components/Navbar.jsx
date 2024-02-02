@@ -4,7 +4,13 @@ import searchIcon from "../assets/search.svg";
 import userIcon from "../assets/user.svg";
 import logo from "../assets/logo.svg";
 import QuickCart from "./QuickCart";
-export default function Navbar({ product, cart, setCart }) {
+export default function Navbar({
+  product,
+  cart,
+  setCart,
+  visibleQuickCart,
+  setVisibleQuickCart,
+}) {
   return (
     <nav>
       <div className="flex justify-between items-center pt-2 ">
@@ -37,12 +43,19 @@ export default function Navbar({ product, cart, setCart }) {
             <img
               src={cartIcon}
               className=" h-6 w-6 cursor-pointer hover:scale-110"
+              onClick={() => setVisibleQuickCart(true)}
             />
             (0)
           </div>
         </div>
-        <div className="absolute top-0 right-0 z-20">
-          <QuickCart product={product} cart={cart} setCart={setCart} />
+        <div className={`${visibleQuickCart ? "block" : "hidden"}`}>
+          <QuickCart
+            product={product}
+            cart={cart}
+            setCart={setCart}
+            visibleQuickCart={visibleQuickCart}
+            setVisibleQuickCart={setVisibleQuickCart}
+          />
         </div>
       </div>
     </nav>

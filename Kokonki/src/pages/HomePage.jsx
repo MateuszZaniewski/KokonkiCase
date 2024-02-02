@@ -12,6 +12,7 @@ export default function HomePage() {
   const [product, setProduct] = useState([]);
   const [visiblePage, setVisiblePage] = useState(1);
   const [cart, setCart] = useState([1]);
+  const [visibleQuickCart, setVisibleQuickCart] = useState(false);
   useEffect(() => {
     const fetchData = async () => {
       const { data, error } = await supabase
@@ -30,16 +31,22 @@ export default function HomePage() {
   }, [productName]);
   return (
     <div className="font-inter bg-[#F9F8F9] max-w-[1440px] mx-auto xl:min-h-[100vh]">
-      <Navbar product={product} cart={cart} setCart={setCart} />
+      <Navbar
+        product={product}
+        cart={cart}
+        setCart={setCart}
+        visibleQuickCart={visibleQuickCart}
+        setVisibleQuickCart={setVisibleQuickCart}
+      />
       <Links />
       <ProductOverview
         product={product}
         visiblePage={visiblePage}
         setVisiblePage={setVisiblePage}
       />
-      {/* <Newsletter />
+      <Newsletter />
       <ObserverInsta />
-      <Footer /> */}
+      <Footer />
     </div>
   );
 }
