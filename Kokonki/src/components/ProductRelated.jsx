@@ -1,7 +1,10 @@
 // import redHeartFillIcon from "../assets/redHeart-fill.svg";
 import redHeartEmptyIcon from "../assets/redHeart-empty.svg";
 import Promotion from "./Boxes/Promotion";
-export default function ProductRelated({ product }) {
+import { AppContext } from "../context/AppContext";
+import { useContext } from "react";
+export default function ProductRelated() {
+  const { product } = useContext(AppContext);
   if (product && product.length > 0) {
     return (
       <div className="w-full xl:pb-20">

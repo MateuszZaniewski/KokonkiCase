@@ -4,13 +4,11 @@ import searchIcon from "../assets/search.svg";
 import userIcon from "../assets/user.svg";
 import logo from "../assets/logo.svg";
 import QuickCart from "./QuickCart";
-export default function Navbar({
-  product,
-  cart,
-  setCart,
-  visibleQuickCart,
-  setVisibleQuickCart,
-}) {
+import { AppContext } from "../context/AppContext";
+import { useContext } from "react";
+export default function Navbar() {
+  const { product, cart, setCart, visibleQuickCart, setVisibleQuickCart } =
+    useContext(AppContext);
   return (
     <nav>
       <div className="flex justify-between items-center pt-2 ">
@@ -45,7 +43,7 @@ export default function Navbar({
               className=" h-6 w-6 cursor-pointer hover:scale-110"
               onClick={() => setVisibleQuickCart(true)}
             />
-            (0)
+            ({cart.length})
           </div>
         </div>
         <div className={`${visibleQuickCart ? "block" : "hidden"}`}>

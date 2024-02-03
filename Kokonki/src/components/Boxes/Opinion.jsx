@@ -1,7 +1,6 @@
 import Star from "./Star";
 import checkIcon from "../../assets/check.svg";
 import trustIcon from "../../assets/trustMate.png";
-
 export default function Opinion({ value }) {
   return (
     <div className="flex xl:px-10 xl:py-14 border-b-2 border-black ">

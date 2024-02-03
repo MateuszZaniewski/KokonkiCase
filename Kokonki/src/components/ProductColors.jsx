@@ -1,5 +1,4 @@
 import Color from "./Boxes/Color";
-
 export default function ProductColors({ colors }) {
   return (
     <div>

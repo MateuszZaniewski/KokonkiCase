@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
+import { AppContext } from "../context/AppContext";
+import { useContext } from "react";
 
-export default function ProductImages({ product }) {
+export default function ProductImages() {
+  const { product } = useContext(AppContext);
   const [activeImage, setActiveImage] = useState(null);
 
   // Sets active first image from pool if theres none sets already

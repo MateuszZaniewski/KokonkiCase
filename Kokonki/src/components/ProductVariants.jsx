@@ -9,9 +9,29 @@ import ProductColors from "./ProductColors";
 import Count from "./Boxes/Count";
 import CtaButton from "./Boxes/CtaButton";
 import { useState } from "react";
+import { AppContext } from "../context/AppContext";
+import { useContext } from "react";
 
-export default function ProductVariants({ product }) {
+export default function ProductVariants() {
+  const { product, cart, setCart, setShowAddedToCardModal } =
+    useContext(AppContext);
   const [favourite, setFavourite] = useState(false);
+
+  const addToCart = (product) => {
+    const existingProductIndex = cart.findIndex(
+      (item) => item.product.id === product.id
+    );
+
+    if (existingProductIndex !== -1) {
+      const updatedCart = [...cart];
+      updatedCart[existingProductIndex].count += 1;
+      setCart(updatedCart);
+    } else {
+      setShowAddedToCardModal(true);
+      setCart([...cart, { product, count: 1 }]);
+    }
+  };
+
   if (product && product.length > 0) {
     return (
       <div className="w-full">
@@ -36,11 +56,13 @@ export default function ProductVariants({ product }) {
         />
         <ProductColors colors={product[0].colors} />
         <Count />
-        <CtaButton
-          text="Dodaj do koszyka"
-          background="bg-[#2A4746]"
-          color="text-[#FFFFFF]"
-        />
+        <div onClick={() => addToCart(product[0])}>
+          <CtaButton
+            text="Dodaj do koszyka"
+            background="bg-[#2A4746]"
+            color="text-[#FFFFFF]"
+          />
+        </div>
         <div className="flex gap-1 py-7">
           <img src={truckIcon} />
           <span>Darmowa dostawa od 200 zł</span>

@@ -1,6 +1,9 @@
 import Pagination from "./Boxes/Pagination";
 import Star from "./Boxes/Star";
-export default function ProductOpinions({ product }) {
+import { AppContext } from "../context/AppContext";
+import { useContext } from "react";
+export default function ProductOpinions() {
+  const { product } = useContext(AppContext);
   if (product && product.length > 0) {
     const rating = product[0].opinions.map((opinion) => {
       let summary = 0;
