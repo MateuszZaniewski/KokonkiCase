@@ -120,13 +120,13 @@ export default function QuickCart() {
   };
 
   return (
-    <div>
+    <div className="">
       <div
         onClick={() => setVisibleQuickCart(false)}
         className="absolute z-10 top-0 right-0 w-[100vw] h-[100vh] bg-transparent backdrop-blur-[2px] brightness-50"
       ></div>
-      <div>
-        <div className=" absolute top-0 right-0 z-10 xl:w-[492px] xl:h-[810px] bg-[#F9F8F9] flex xl:flex-col">
+      <div className="max-w-[1440px] relative">
+        <div className=" absolute top-0 right-0 z-10 xl:w-[492px] xl:h-[810px] rounded-xl bg-[#F9F8F9] flex xl:flex-col">
           <div className="flex justify-between xl:px-5 xl:py-6 border-b-2 border-black">
             <span>KOSZYK</span>
             <img

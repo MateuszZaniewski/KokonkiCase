@@ -17,6 +17,7 @@ export default function HomePage() {
   const [visibleQuickCart, setVisibleQuickCart] = useState(false);
   const [quantity, setQuantity] = useState(1);
   const [showAddedToCardModal, setShowAddedToCardModal] = useState(false);
+  const [visibleHamburgerMenu, setVisibleHamburgerMenu] = useState(false);
   useEffect(() => {
     const fetchData = async () => {
       const { data, error } = await supabase
@@ -50,24 +51,16 @@ export default function HomePage() {
         setQuantity,
         showAddedToCardModal,
         setShowAddedToCardModal,
+        visibleHamburgerMenu,
+        setVisibleHamburgerMenu,
       }}
     >
       <div className="font-inter bg-[#F9F8F9] max-w-[1440px] mx-auto xl:min-h-[100vh]">
         {showAddedToCardModal ? <AddedToCardModal /> : null}
 
-        <Navbar
-          product={product}
-          cart={cart}
-          setCart={setCart}
-          visibleQuickCart={visibleQuickCart}
-          setVisibleQuickCart={setVisibleQuickCart}
-        />
+        <Navbar />
         <Links />
-        <ProductOverview
-          product={product}
-          visiblePage={visiblePage}
-          setVisiblePage={setVisiblePage}
-        />
+        <ProductOverview />
         <Newsletter />
         <ObserverInsta />
         <Footer />

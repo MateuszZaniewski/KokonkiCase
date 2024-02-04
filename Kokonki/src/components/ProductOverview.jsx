@@ -7,26 +7,22 @@ import { AppContext } from "../context/AppContext";
 import { useContext } from "react";
 
 export default function ProductOverview() {
-  const { product, visiblePage, setVisiblePage } = useContext(AppContext);
+  const { product } = useContext(AppContext);
   if (product) {
     return (
       <div className="flex-col">
         <div className="flex pt-28 px-14 gap-24 relative">
-          <ProductImages product={product} />
-          <ProductVariants product={product} />
+          <ProductImages />
+          <ProductVariants />
         </div>
         <div className="w-1/2">
-          <ProductInformation
-            product={product}
-            visiblePage={visiblePage}
-            setVisiblePage={setVisiblePage}
-          />
+          <ProductInformation />
         </div>
         <div>
-          <ProductRelated product={product} />
+          <ProductRelated />
         </div>
         <div>
-          <ProductOpinions product={product} />
+          <ProductOpinions />
         </div>
       </div>
     );
