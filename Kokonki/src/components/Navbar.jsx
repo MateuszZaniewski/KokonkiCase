@@ -19,6 +19,7 @@ export default function Navbar() {
   const {
     cart,
     visibleQuickCart,
+    setVisibleQuickCart,
     visibleHamburgerMenu,
     setVisibleHamburgerMenu,
   } = useContext(AppContext);
@@ -148,7 +149,7 @@ export default function Navbar() {
               <img
                 src={cartIcon}
                 className=" h-6 w-6 cursor-pointer hover:scale-110"
-                onClick={() => showMenu()}
+                onClick={() => setVisibleQuickCart(true)}
               />
               ({cart.length})
             </div>

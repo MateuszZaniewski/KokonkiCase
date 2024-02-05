@@ -15,21 +15,45 @@ export default function ProductImages() {
 
   if (product && product.length > 0 && product[0].images) {
     return (
-      <div className="flex gap-5 xl:min-w-[674px]">
-        <div className="flex-col space-y-5">
-          {product[0].images.map((image) => (
+      <>
+        <div className="hidden xl:flex xl:flex-row gap-5 xl:min-w-[674px] w-full">
+          <div className="hidden xl:flex xl:flex-col xl:space-y-5">
+            {product[0].images.map((image) => (
+              <img
+                key={image}
+                src={image}
+                className="h-24 w-24 cursor-pointer"
+                onClick={() => setActiveImage(image)}
+              />
+            ))}
+          </div>
+          <div>
+            <img src={activeImage} className="xl:h-[558px] xl:w-[558px]" />
+          </div>
+        </div>
+
+        <div className="xl:hidden px-3">
+          <div className="flex justify-center">
             <img
-              key={image}
-              src={image}
-              className="h-24 w-24 cursor-pointer"
-              onClick={() => setActiveImage(image)}
+              src={activeImage}
+              className="h-[270px] w-[270px] md:h-[300px] md:w-[300px] lg:h-[400px] lg:w-[400px] max-h-[500px] max-w-[500px] rounded-md"
             />
-          ))}
+          </div>
+          <div className="flex justify-center">
+            <div className="flex overflow-x-auto gap-4 pt-4 justify-start px-1">
+              {product[0].images.map((image) => (
+                <div key={image} className="h-24 w-24 min-h-24 min-w-24">
+                  <img
+                    src={image}
+                    className="h-full w-full cursor-pointer object-cover"
+                    onClick={() => setActiveImage(image)}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
-        <div>
-          <img src={activeImage} className="xl:h-[558px] xl:w-[558px]" />
-        </div>
-      </div>
+      </>
     );
   } else {
     return <div>Loading...</div>;

@@ -4,10 +4,29 @@ import CtaButton from "../components/Boxes/CtaButton";
 import QuickCartCount from "./Boxes/QuickCartCount";
 import { AppContext } from "../context/AppContext";
 import { useContext } from "react";
+import {
+  disableBodyScroll,
+  enableBodyScroll,
+  clearAllBodyScrollLocks,
+} from "body-scroll-lock";
 export default function QuickCart() {
-  const { product, cart, setCart, setVisibleQuickCart } =
+  const { product, cart, setCart, visibleQuickCart, setVisibleQuickCart } =
     useContext(AppContext);
   const [totalCost, setTotalCost] = useState(0);
+  const root = document.querySelector("nav");
+
+  useEffect(() => {
+    if (visibleQuickCart) {
+      disableBodyScroll(root);
+    } else {
+      enableBodyScroll(root);
+    }
+
+    return () => {
+      // Release any locks when the component unmounts
+      clearAllBodyScrollLocks();
+    };
+  }, [visibleQuickCart, root]);
 
   useEffect(() => {
     if (product && cart.length > 0) {
@@ -41,7 +60,7 @@ export default function QuickCart() {
   const EmptyCart = () => {
     return (
       <>
-        <div className="xl:py-24 font-semibold xl:text-[14px] text-center">
+        <div className="xl:py-24 font-semibold xl:text-[14px] py-14 text-center">
           <span>TWÓJ KOSZYK JEST PUSTY</span>
         </div>
         <div className="flex flex-col justify-center items-center gap-5">
@@ -126,8 +145,8 @@ export default function QuickCart() {
         className="absolute z-10 top-0 right-0 w-[100vw] h-[100vh] bg-transparent backdrop-blur-[2px] brightness-50"
       ></div>
       <div className="max-w-[1440px] relative">
-        <div className=" absolute top-0 right-0 z-10 xl:w-[492px] xl:h-[810px] rounded-xl bg-[#F9F8F9] flex xl:flex-col">
-          <div className="flex justify-between xl:px-5 xl:py-6 border-b-2 border-black">
+        <div className=" absolute top-0 right-0 z-10 w-[492px] h-[810px] rounded-xl bg-[#F9F8F9] flex flex-col">
+          <div className="flex justify-between px-5 py-6 border-b-2 border-black">
             <span>KOSZYK</span>
             <img
               src={closeIcon}
@@ -135,7 +154,7 @@ export default function QuickCart() {
               onClick={() => setVisibleQuickCart(false)}
             />
           </div>
-          <div className="flex justify-center xl:py-3 border-b-2 border-black">
+          <div className="flex justify-center py-3 border-b-2 border-black">
             <span>
               {" "}
               {200 - totalCost > 0

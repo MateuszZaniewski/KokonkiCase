@@ -10,8 +10,8 @@ export default function ProductOverview() {
   const { product } = useContext(AppContext);
   if (product) {
     return (
-      <div className="flex-col">
-        <div className="flex pt-28 px-14 gap-24 relative">
+      <div className="flex-col sm:w-[600px] md:w-[800px] mx-auto xl:mx-0">
+        <div className="flex xl:flex-row flex-col pt-28 xl:px-14 gap-24 relative">
           <ProductImages />
           <ProductVariants />
         </div>
