@@ -12,7 +12,7 @@ export default function ProductOpinions() {
     });
 
     return (
-      <div className="flex xl:pl-14 xl:pb-11 xl:pt-16">
+      <div className="flex xl:flex-row flex-col xl:pl-14 pt-10 px-4 xl:pb-11 xl:pt-16">
         <div className=" w-1/2">
           <div className="pb-2">
             <Star
@@ -38,7 +38,7 @@ export default function ProductOpinions() {
           </div>
         </div>
 
-        <div className="w-1/2 pr-14">
+        <div className="xl:w-1/2 xl:pr-14">
           <div>
             <Pagination opinions={product[0].opinions} />
           </div>

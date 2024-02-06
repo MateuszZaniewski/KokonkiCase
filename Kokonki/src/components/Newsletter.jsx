@@ -3,7 +3,7 @@ import circleBrown from "../assets/circleBrown.svg";
 import CtaButton from "./Boxes/CtaButton";
 export default function Newsletter() {
   return (
-    <div className="flex text-[#222220] xl:pb-24">
+    <div className="flex text-[#222220] xl:pb-24 pt-6 xl:pt-0">
       <div className="w-1/4 flex justify-center xl:pt-4">
         <img src={circleBrown} className="xl:h-[190px] xl:w-[190px]" />
       </div>

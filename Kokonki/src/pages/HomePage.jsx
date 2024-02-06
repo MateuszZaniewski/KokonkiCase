@@ -61,9 +61,9 @@ export default function HomePage() {
         <Navbar />
         <Links />
         <ProductOverview />
-        {/* <Newsletter />
+        <Newsletter />
         <ObserverInsta />
-        <Footer /> */}
+        <Footer />
       </div>
     </AppContext.Provider>
   );

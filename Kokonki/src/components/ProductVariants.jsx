@@ -70,7 +70,7 @@ export default function ProductVariants() {
           </div>
         </div>
 
-        <div className="xl:hidden w-[95%] flex flex-col mx-auto px-5">
+        <div className="xl:hidden flex flex-col px-5">
           <Promotion text="Promocja" visible={true} />
           <div className="pt-4">{product[0].category}</div>
           <div className="flex flex-col gap-5">
