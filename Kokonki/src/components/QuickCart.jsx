@@ -13,7 +13,7 @@ export default function QuickCart() {
   const { product, cart, setCart, visibleQuickCart, setVisibleQuickCart } =
     useContext(AppContext);
   const [totalCost, setTotalCost] = useState(0);
-  const root = document.querySelector("nav");
+  const root = document.querySelector("#root");
 
   useEffect(() => {
     if (visibleQuickCart) {

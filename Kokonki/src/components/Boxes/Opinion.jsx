@@ -35,7 +35,7 @@ export default function Opinion({ value }) {
         </div>
       </div>
 
-      <div className="flex xl:hidden px-4 py-8 border-b-2 border-black md:w-[450px] lg:w-[600px]">
+      <div className="flex xl:hidden px-4 py-8 border-b-2 border-black md:w-[450px] lg:w-[600px] mx-auto">
         <div className="flex flex-col flex-wrap xl:hidden">
           <div className="">
             {value.image.length > 0 ? (
@@ -49,7 +49,7 @@ export default function Opinion({ value }) {
               <Star rating={value.rate} />
               <div className={value.trust ? "block" : "hidden"}>
                 <img
-                  className="xl:w-[144px] xl:h-[28px] w-20 h-10"
+                  className="xl:w-[144px] xl:h-[28px] w-28 h-10"
                   src={trustIcon}
                 />
               </div>

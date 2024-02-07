@@ -24,7 +24,7 @@ export default function Navbar() {
     setVisibleHamburgerMenu,
   } = useContext(AppContext);
 
-  const root = document.querySelector("nav");
+  const root = document.querySelector("#root");
   console.log(root);
 
   useEffect(() => {
@@ -39,10 +39,6 @@ export default function Navbar() {
       clearAllBodyScrollLocks();
     };
   }, [visibleHamburgerMenu, root]);
-
-  const showMenu = () => {
-    setVisibleHamburgerMenu(true);
-  };
 
   const hideMenu = () => {
     setVisibleHamburgerMenu(false);

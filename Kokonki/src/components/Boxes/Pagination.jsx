@@ -47,7 +47,7 @@ export default function Pagination({ opinions }) {
       <>
         <Items currentItems={currentItems} opinions={opinions} />
         <ReactPaginate
-          className="flex justify-center items-center gap-5 xl:py-14 py-4 md:w-[450px] lg:w-[600px]"
+          className="flex justify-center items-center gap-5 xl:py-14 py-4 md:w-[450px] lg:w-[600px] mx-auto"
           nextLabel=">"
           onPageChange={handlePageClick}
           pageRangeDisplayed={3}

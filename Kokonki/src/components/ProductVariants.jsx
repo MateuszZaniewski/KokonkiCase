@@ -34,8 +34,8 @@ export default function ProductVariants() {
 
   if (product && product.length > 0) {
     return (
-      <div className="w-full">
-        <div className="hidden xl:block">
+      <div className="w-full md:w-[450px] lg:w-[600px] xl:w-fit mx-auto xl:mx-0">
+        <div className="hidden xl:block xl:w-[500px]">
           <Promotion text="Promocja" visible={true} />
           <div className="pt-2">{product[0].category}</div>
           <div className="flex justify-between">

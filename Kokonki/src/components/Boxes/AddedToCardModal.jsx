@@ -9,10 +9,12 @@ export default function AddedToCardModal() {
       <div>
         <div
           onClick={() => setShowAddedToCardModal(false)}
-          className="absolute z-10 top-0 right-0 w-[100vw] h-[100vh] border border-green-500 bg-transparent backdrop-blur-[2px] brightness-50"
+          className="fixed z-10 top-0 right-0 w-[100vw] h-[100vh] bg-transparent backdrop-blur-[2px] brightness-50"
         ></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 xl:w-[600px] xl:h-[400px] bg-[#F9F8F9] rounded-xl ">
-          <div className="flex flex-col h-full xl:px-[97px] xl:pt-12 ">
+        <div
+          className={`fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 xl:w-[600px] h-[400px] bg-[#F9F8F9] rounded-xl`}
+        >
+          <div className="flex flex-col h-full xl:px-[97px] xl:pt-12 px-4 py-4 ">
             <div className="flex justify-between items-center xl:pb-8">
               <span>DODANO DO KOSZYKA</span>
               <img

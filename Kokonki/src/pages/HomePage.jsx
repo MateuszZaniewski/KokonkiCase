@@ -18,6 +18,7 @@ export default function HomePage() {
   const [quantity, setQuantity] = useState(1);
   const [showAddedToCardModal, setShowAddedToCardModal] = useState(false);
   const [visibleHamburgerMenu, setVisibleHamburgerMenu] = useState(false);
+
   useEffect(() => {
     const fetchData = async () => {
       const { data, error } = await supabase

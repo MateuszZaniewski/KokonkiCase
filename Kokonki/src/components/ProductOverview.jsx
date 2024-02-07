@@ -18,7 +18,7 @@ export default function ProductOverview() {
         <div className="xl:w-1/2 xl:block">
           <ProductInformation />
         </div>
-        <div className="flex flex-wrap xl:flex-nowrap">
+        <div className="flex flex-wrap xl:flex-nowrap md:w-[450px] lg:w-[600px] mx-auto xl:w-full xl:px-5">
           <ProductRelated />
         </div>
         <div>

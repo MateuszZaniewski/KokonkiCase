@@ -7,16 +7,16 @@ export default function ProductRelated() {
   const { product } = useContext(AppContext);
   if (product && product.length > 0) {
     return (
-      <div className="xl:w-full xl:pb-20">
+      <div className="xl:w-full xl:pb-20 mx-auto">
         <h2 className="xl:pl-14 font-bold xl:text-[20px] xl:pb-11 pb-5 pl-4">
           Podobne produkty
         </h2>
-        <div className="flex flex-row flex-wrap xl:gap-14 gap-4 w-full justify-start">
+        <div className="flex flex-row flex-wrap xl:flex-nowrap xl:gap-14 gap-4 w-full justify-start">
           {product[0].related.map((item) => {
             return (
               <div
                 key={item.image}
-                className="relative cursor-pointer flex xl:flex-col gap-4 xl:gap-0 ml-4 w-[350px] md:w-[400px] lg:w-[500px] xl:w-auto"
+                className="relative cursor-pointer flex xl:flex-col gap-4 xl:gap-0 ml-4 w-[350px] md:w-[400px] lg:w-[500px] mx-auto xl:w-auto"
               >
                 <div className="flex flex-col justify-center">
                   {item.promotion && (

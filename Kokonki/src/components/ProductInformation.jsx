@@ -9,7 +9,7 @@ export default function ProductInformation() {
   const { product, visiblePage, setVisiblePage } = useContext(AppContext);
   if (product && product.length > 0) {
     return (
-      <div className="xl:pl-44 px-4 flex-col xl:max-w-[538px] md:w-[450px] lg:w-[600px] xl:pt-16 xl:pb-24 pb-14">
+      <div className="xl:pl-44 px-4 flex-col xl:max-w-[538px] md:w-[450px] lg:w-[600px] xl:w-auto mx-auto xl:mx-0 xl:pt-16 xl:pb-24 pb-14">
         <Info
           visiblePage={visiblePage}
           setVisiblePage={setVisiblePage}

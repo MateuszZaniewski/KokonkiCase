@@ -12,8 +12,8 @@ export default function ProductOpinions() {
     });
 
     return (
-      <div className="flex xl:flex-row flex-col xl:pl-14 pt-10 px-4 xl:pb-11 xl:pt-16">
-        <div className=" w-1/2">
+      <div className="flex xl:flex-row flex-col xl:pl-14 pt-10 px-4 xl:pb-11 xl:pt-16 md:w-[450px] lg:w-[600px] mx-auto xl:w-full">
+        <div className=" xl:w-1/2">
           <div className="pb-2">
             <Star
               rating={
