@@ -1,11 +1,38 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { createRoot } from "react-dom/client";
+import App from "./App";
+import { AppProvider } from "./AppProvider";
+import HomePage from "./pages/HomePage";
+import ProductPage from "./pages/ProductPage";
+import CheckoutPage from "./pages/CheckoutPage";
 import "./index.css";
-import router from "./router/router";
-import { RouterProvider } from "react-router-dom";
 
-ReactDOM.createRoot(document.getElementById("root")).render(
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+  },
+  {
+    path: "/home",
+    element: <HomePage />,
+  },
+  {
+    path: "/product/:name",
+    element: <ProductPage />,
+  },
+  {
+    path: "/checkout",
+    element: <CheckoutPage />,
+  },
+]);
+
+const root = createRoot(document.getElementById("root"));
+
+root.render(
   <React.StrictMode>
-    <RouterProvider router={router}></RouterProvider>
+    <AppProvider>
+      <RouterProvider router={router} />
+    </AppProvider>
   </React.StrictMode>
 );

@@ -16,7 +16,7 @@ export default function ProductRelated() {
             return (
               <div
                 key={item.image}
-                className="relative cursor-pointer flex xl:flex-col gap-4 xl:gap-0 ml-4 w-[350px] md:w-[400px] lg:w-[500px] mx-auto xl:w-auto"
+                className="relative cursor-pointer flex xl:flex-col gap-4 xl:gap-0 ml-4 w-[300px] md:w-[400px] lg:w-[500px] mx-auto xl:w-auto"
               >
                 <div className="flex flex-col justify-center">
                   {item.promotion && (

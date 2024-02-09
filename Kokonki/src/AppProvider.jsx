@@ -1,20 +1,11 @@
-import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { supabase } from "../config/supabaseClient";
-import Footer from "../components/Footer";
-import Links from "../components/Links";
-import Navbar from "../components/Navbar";
-import Newsletter from "../components/Newsletter";
-import ObserverInsta from "../components/ObserverInsta";
-import ProductOverview from "../components/ProductOverview";
-import { AppContext } from "./../context/AppContext";
-import AddedToCardModal from "../components/Boxes/AddedToCardModal";
+import { createContext, useState, useEffect } from "react";
+import { supabase } from "./config/supabaseClient";
 
-export default function ProductPage() {
-  const { name } = useParams();
-  const [productName, setProductName] = useState(name);
+export const AppContext = createContext();
+
+export const AppProvider = ({ children }) => {
+  const [productName, setProductName] = useState("Drops Nepal");
   const [product, setProduct] = useState([]);
-  const [visiblePage, setVisiblePage] = useState(1);
   const [cart, setCart] = useState([]);
   const [visibleQuickCart, setVisibleQuickCart] = useState(false);
   const [quantity, setQuantity] = useState(1);
@@ -37,6 +28,7 @@ export default function ProductPage() {
     };
     fetchData();
   }, [productName]);
+
   return (
     <AppContext.Provider
       value={{
@@ -44,8 +36,6 @@ export default function ProductPage() {
         setProduct,
         productName,
         setProductName,
-        visiblePage,
-        setVisiblePage,
         cart,
         setCart,
         visibleQuickCart,
@@ -58,16 +48,7 @@ export default function ProductPage() {
         setVisibleHamburgerMenu,
       }}
     >
-      <div className="font-inter bg-[#F9F8F9] max-w-[1440px] mx-auto xl:min-h-[100vh]">
-        {showAddedToCardModal ? <AddedToCardModal /> : null}
-
-        <Navbar />
-        <Links />
-        <ProductOverview />
-        <Newsletter />
-        <ObserverInsta />
-        <Footer />
-      </div>
+      {children}
     </AppContext.Provider>
   );
-}
+};

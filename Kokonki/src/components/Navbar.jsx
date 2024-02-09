@@ -43,7 +43,7 @@ export default function Navbar() {
   const hideMenu = () => {
     setVisibleHamburgerMenu(false);
   };
-
+  const links = ["/account", "/favs", "/checkout"];
   const categoryLinks = ["Nowości", "Włóczki", "Akcesoria", "Promocje", "Blog"];
   const interLinks = ["Moje konto", "Ulubione", "Koszyk"];
 
@@ -104,7 +104,9 @@ export default function Navbar() {
                     key={e}
                     className="flex justify-between pl-5 pr-2 pb-1 border-b"
                   >
-                    <Link className="hover:text-[#F6C48F]">{e}</Link>
+                    <Link to="/checkout" className="hover:text-[#F6C48F]">
+                      {e}
+                    </Link>
                     <img src={rightArrowIcon} className="h-5 w-5" />
                   </div>
                 );
@@ -124,7 +126,9 @@ export default function Navbar() {
         </div>
         {/* Logo section */}
         <div className="w-full flex justify-center">
-          <img src={logo} className="lg:w-[20rem] w-48 lg:h-auto" />
+          <Link to="/home">
+            <img src={logo} className="lg:w-[20rem] w-48 lg:h-auto" />
+          </Link>
         </div>
         <div className="hidden md:flex">
           {/* User, Fav, Cart section */}

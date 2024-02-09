@@ -1,7 +1,12 @@
-import "./App.css";
+import "./index.css";
+import { useContext } from "react";
+import { AppContext } from "./AppProvider";
 
 function App() {
-  return <div className="">Hello App Js</div>;
+  const { product } = useContext(AppContext);
+
+  console.log(product);
+  return <div>Hello App Js</div>;
 }
 
 export default App;

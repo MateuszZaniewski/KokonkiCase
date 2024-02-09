@@ -56,6 +56,10 @@ export default function ProductImages() {
       </>
     );
   } else {
-    return <div>Loading...</div>;
+    return (
+      <div className="text-center">
+        <h1>We are sorry, but we cannot find this product</h1>
+      </div>
+    );
   }
 }
