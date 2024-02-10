@@ -30,6 +30,7 @@ export default function ProductVariants() {
       setShowAddedToCardModal(true);
       setCart([...cart, { product, count: 1 }]);
     }
+    console.log(cart);
   };
 
   if (product && product.length > 0) {

@@ -21,6 +21,8 @@ export default function ProductPage() {
   const [showAddedToCardModal, setShowAddedToCardModal] = useState(false);
   const [visibleHamburgerMenu, setVisibleHamburgerMenu] = useState(false);
 
+  console.log(quantity);
+
   useEffect(() => {
     const fetchData = async () => {
       const { data, error } = await supabase

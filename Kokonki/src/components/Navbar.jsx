@@ -43,7 +43,6 @@ export default function Navbar() {
   const hideMenu = () => {
     setVisibleHamburgerMenu(false);
   };
-  const links = ["/account", "/favs", "/checkout"];
   const categoryLinks = ["Nowości", "Włóczki", "Akcesoria", "Promocje", "Blog"];
   const interLinks = ["Moje konto", "Ulubione", "Koszyk"];
 

@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import { AppContext } from "../AppProvider";
 export default function CheckoutPage() {
-  const { cart } = useContext(AppContext);
+  const { product } = useContext(AppContext);
 
-  console.log(cart);
+  console.log(product);
 
   return <div>Not product</div>;
 }
