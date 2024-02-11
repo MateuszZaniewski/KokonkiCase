@@ -1,9 +1,20 @@
-import { useContext } from "react";
-import { AppContext } from "../AppProvider";
+import { Link } from "react-router-dom";
+import { useCartStore } from "../store/store";
 export default function CheckoutPage() {
-  const { product } = useContext(AppContext);
+  const cart = useCartStore((state) => state.cart);
+  console.log(cart);
+  return (
+    <div>
+      <Link to="/">Home</Link>
 
-  console.log(product);
-
-  return <div>Not product</div>;
+      {cart.map((item) => {
+        return (
+          <div key={item}>
+            <span>{item.name} </span>
+            <span>{item.quantity}</span>
+          </div>
+        );
+      })}
+    </div>
+  );
 }

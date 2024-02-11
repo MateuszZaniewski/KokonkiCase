@@ -25,7 +25,6 @@ export default function Navbar() {
   } = useContext(AppContext);
 
   const root = document.querySelector("#root");
-  console.log(root);
 
   useEffect(() => {
     if (visibleHamburgerMenu) {
@@ -125,7 +124,7 @@ export default function Navbar() {
         </div>
         {/* Logo section */}
         <div className="w-full flex justify-center">
-          <Link to="/home">
+          <Link to="/">
             <img src={logo} className="lg:w-[20rem] w-48 lg:h-auto" />
           </Link>
         </div>

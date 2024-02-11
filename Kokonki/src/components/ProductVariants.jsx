@@ -11,13 +11,16 @@ import CtaButton from "./Boxes/CtaButton";
 import { useState } from "react";
 import { AppContext } from "../context/AppContext";
 import { useContext } from "react";
+import { useCartStore } from "../store/store";
 
 export default function ProductVariants() {
-  const { product, cart, setCart, setShowAddedToCardModal } =
+  const { product, quantity, cart, setCart, setShowAddedToCardModal } =
     useContext(AppContext);
   const [favourite, setFavourite] = useState(false);
+  const addItemToCart = useCartStore((state) => state.addToCart);
 
-  const addToCart = (product) => {
+  const addToCart = (product, quantity) => {
+    addItemToCart(product.name, quantity);
     const existingProductIndex = cart.findIndex(
       (item) => item.product.id === product.id
     );
@@ -30,7 +33,6 @@ export default function ProductVariants() {
       setShowAddedToCardModal(true);
       setCart([...cart, { product, count: 1 }]);
     }
-    console.log(cart);
   };
 
   if (product && product.length > 0) {
@@ -58,7 +60,7 @@ export default function ProductVariants() {
           />
           <ProductColors colors={product[0].colors} />
           <Count />
-          <div onClick={() => addToCart(product[0])}>
+          <div onClick={() => addToCart(product[0], quantity)}>
             <CtaButton
               text="Dodaj do koszyka"
               background="bg-[#2A4746]"
@@ -98,7 +100,7 @@ export default function ProductVariants() {
           />
           <ProductColors colors={product[0].colors} />
           <Count />
-          <div className="" onClick={() => addToCart(product[0])}>
+          <div className="" onClick={() => addToCart(product[0], quantity)}>
             <CtaButton
               text="Dodaj do koszyka"
               background="bg-[#2A4746]"

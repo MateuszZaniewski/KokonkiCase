@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { AppContext } from "../../context/AppContext";
+import { useContext } from "react";
 
 export default function Count() {
-  const [quantity, setQuantity] = useState(1);
+  const { quantity, setQuantity } = useContext(AppContext);
   return (
     <div className="flex gap-1 py-8">
       <button

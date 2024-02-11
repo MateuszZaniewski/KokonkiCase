@@ -1,12 +1,13 @@
 import "./index.css";
-import { useContext } from "react";
-import { AppContext } from "./AppProvider";
+import { Link } from "react-router-dom";
 
 function App() {
-  const { product } = useContext(AppContext);
-
-  console.log(product);
-  return <div>Hello App Js</div>;
+  return (
+    <div>
+      <Link to="/">Home</Link>
+      <Link to="/product/Drops Nepal">Product</Link>
+    </div>
+  );
 }
 
 export default App;

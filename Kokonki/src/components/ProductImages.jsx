@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { AppContext } from "../context/AppContext";
 import { useContext } from "react";
 
 export default function ProductImages() {
   const { product } = useContext(AppContext);
   const [activeImage, setActiveImage] = useState(null);
+  const { name } = useParams();
 
   // Sets active first image from pool if theres none sets already
   useEffect(() => {
@@ -58,7 +60,7 @@ export default function ProductImages() {
   } else {
     return (
       <div className="text-center">
-        <h1>We are sorry, but we cannot find this product</h1>
+        <h1>We are sorry, but {name} can not be found ;( </h1>
       </div>
     );
   }
