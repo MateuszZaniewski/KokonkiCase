@@ -15,15 +15,15 @@ import {
   enableBodyScroll,
   clearAllBodyScrollLocks,
 } from "body-scroll-lock";
+import { useCartStore } from "../store/store";
 export default function Navbar() {
   const {
-    cart,
     visibleQuickCart,
     setVisibleQuickCart,
     visibleHamburgerMenu,
     setVisibleHamburgerMenu,
   } = useContext(AppContext);
-
+  const cart = useCartStore((state) => state.cart);
   const root = document.querySelector("#root");
 
   useEffect(() => {

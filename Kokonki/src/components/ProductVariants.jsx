@@ -19,8 +19,8 @@ export default function ProductVariants() {
   const [favourite, setFavourite] = useState(false);
   const addItemToCart = useCartStore((state) => state.addToCart);
 
-  const addToCart = (product, quantity) => {
-    addItemToCart(product.name, quantity);
+  const addToCart = (product, quantity, price, image) => {
+    addItemToCart(product.name, quantity, price, image);
     const existingProductIndex = cart.findIndex(
       (item) => item.product.id === product.id
     );
@@ -60,7 +60,16 @@ export default function ProductVariants() {
           />
           <ProductColors colors={product[0].colors} />
           <Count />
-          <div onClick={() => addToCart(product[0], quantity)}>
+          <div
+            onClick={() =>
+              addToCart(
+                product[0],
+                quantity,
+                product[0].pricenow,
+                product[0].images[0]
+              )
+            }
+          >
             <CtaButton
               text="Dodaj do koszyka"
               background="bg-[#2A4746]"
@@ -100,7 +109,17 @@ export default function ProductVariants() {
           />
           <ProductColors colors={product[0].colors} />
           <Count />
-          <div className="" onClick={() => addToCart(product[0], quantity)}>
+          <div
+            className=""
+            onClick={() =>
+              addToCart(
+                product[0],
+                quantity,
+                product[0].pricenow,
+                product[0].images[0]
+              )
+            }
+          >
             <CtaButton
               text="Dodaj do koszyka"
               background="bg-[#2A4746]"
