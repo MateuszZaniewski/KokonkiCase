@@ -20,6 +20,14 @@ export const useCartStore = create((set) => ({
         };
       }
     }),
+  calculateTotalCost: () => {
+    set((state) => {
+      const totalCost = state.cart.reduce((acc, currentItem) => {
+        return acc + currentItem.quantity * currentItem.price;
+      }, 0);
+      return totalCost;
+    });
+  },
   increaseQuantity: (item, amount) => {
     set((state) => {
       const existingItemIndex = state.cart.findIndex(

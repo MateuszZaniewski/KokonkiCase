@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import closeIcon from "../assets/close.svg";
 import CtaButton from "../components/Boxes/CtaButton";
 import QuickCartCount from "./Boxes/QuickCartCount";
@@ -13,8 +14,8 @@ import { useCartStore } from "../store/store";
 export default function QuickCart() {
   const { product, setCart, visibleQuickCart, setVisibleQuickCart } =
     useContext(AppContext);
-  const [totalCost, setTotalCost] = useState(0);
   const cart = useCartStore((state) => state.cart);
+  console.log(cart);
   const deleteItemFromCart = useCartStore((state) => state.deleteItem);
   const root = document.querySelector("#root");
 
@@ -30,19 +31,12 @@ export default function QuickCart() {
     };
   }, [visibleQuickCart, root]);
 
-  useEffect(() => {
-    if (product && cart.length > 0) {
-      const calculateCartCost = () => {
-        const newTotalCost = cart.reduce(
-          (acc, item) => acc + item.price * item.quantity,
-          0
-        );
-        setTotalCost(newTotalCost);
-      };
-
-      calculateCartCost();
-    }
-  }, [cart]);
+  const totalCost = () => {
+    const total = cart.reduce((acc, item) => {
+      return acc + item.price * item.quantity;
+    }, 0);
+    return total;
+  };
 
   const handleCountChange = (productId, newCount) => {
     setCart((prevCart) => {
@@ -128,14 +122,16 @@ export default function QuickCart() {
             </div>
             <div className="w-[70%] mx-auto font-bold flex justify-between pb-10">
               <span>ŁĄCZNA KWOTA</span>
-              <span>{totalCost.toString().split(".").join(",")} zł</span>
+              {totalCost() + " zł"}
             </div>
             <div className="flex justify-center w-[70%] mx-auto">
-              <CtaButton
-                text="Zobacz koszyk"
-                background="bg-[#2A4746]"
-                color="text-[#F9F8F9]"
-              />
+              <Link to="/checkout">
+                <CtaButton
+                  text="Zobacz koszyk"
+                  background="bg-[#2A4746]"
+                  color="text-[#F9F8F9]"
+                />
+              </Link>
             </div>
           </div>
         </>
@@ -143,7 +139,7 @@ export default function QuickCart() {
     }
   };
 
-  if (product && product.length > 0) {
+  if (cart && cart.length > 0) {
     return (
       <div className="">
         <div
@@ -163,9 +159,9 @@ export default function QuickCart() {
             <div className="flex justify-center py-3 border-b-2 border-black">
               <span>
                 {" "}
-                {200 - cart[0].price * cart[0].quantity > 0
+                {200 - totalCost() > 0
                   ? `Do darmowej dostawy brakuje Ci ${
-                      200 - cart.price * cart.quantity
+                      200 - cart[0].price * cart[0].quantity
                     } zł`
                   : "Brawo, masz darmową dostawę!"}{" "}
                 {/* UPDATE CART.PRICE to have only numbers without zl */}

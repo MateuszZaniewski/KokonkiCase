@@ -1,23 +1,30 @@
 import { Link } from "react-router-dom";
 import { useCartStore } from "../store/store";
 import Navbar from "./../components/Navbar";
+import Links from "./../components/Links";
+import Cart from "../components/CartComponents/Cart";
+import Footer from "./../components/Footer";
 
 export default function CheckoutPage() {
   const cart = useCartStore((state) => state.cart);
   console.log(cart);
   return (
-    <div>
-      <Link to="/">Home</Link>
+    <div className="bg-[#F9F8F9]">
       <Navbar />
-      {cart.map((item) => {
-        return (
-          <div key={item}>
-            <span>{item.name} </span>
-            <span>{item.quantity}</span>
-            <span>{item.price}</span>
-          </div>
-        );
-      })}
+      <Links />
+      <Cart />
+      <Link to="/">Home</Link>
+      {/* <Footer /> */}
     </div>
   );
 }
+
+// {cart.map((item) => {
+//   return (
+//     <div key={item}>
+//       <span>{item.name} </span>
+//       <span>{item.quantity}</span>
+//       <span>{item.price}</span>
+//     </div>
+//   );
+// })}
