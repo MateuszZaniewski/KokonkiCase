@@ -1,6 +1,8 @@
 import { useCartStore } from "../../store/store";
 import QuickCartCount from "../Boxes/QuickCartCount";
 import alertIcon from "../../assets/alert.svg";
+import CtaButton from "../Boxes/CtaButton";
+import truckIcon from "../../assets/truck.svg";
 
 export default function Cart() {
   const cart = useCartStore((state) => state.cart);
@@ -13,8 +15,8 @@ export default function Cart() {
   };
 
   return (
-    <div className="xl:px-16 xl:pt-10">
-      <div className="flex items-center xl:gap-[60px] gap-5">
+    <div className="xl:px-16 lg:px-10 px-5 lg:pt-10 xl:max-w-[1320px] xl:mx-auto xl:pb-32">
+      <div className="flex items-center lg:gap-[60px] gap-5 pt-5 lg:pt-0">
         <span className=" font-semibold text-[20px]">Koszyk</span>
         <span>
           {cart.length === 1
@@ -22,7 +24,7 @@ export default function Cart() {
             : `${cart.length} produktów`}
         </span>
       </div>
-      <div className="xl:pt-10">
+      <div className="lg:pt-10 py-5 text-center lg:text-left">
         <span>
           {200 - totalCost() > 0
             ? `Do darmowej dostawy brakuje Ci ${
@@ -32,18 +34,18 @@ export default function Cart() {
         </span>
       </div>
 
-      <div>
-        <div className="xl:max-w-[670px]">
+      <div className="flex flex-col lg:flex-row justify-between">
+        <div className="xl:w-[670px] lg:w-[500px]">
           {cart.map((cartItem) => {
             return (
               <li
                 key={cartItem.name}
-                className="flex xl:py-10 xl:w-[90%] xl:gap-5"
+                className="flex lg:py-10 lg:w-[90%] lg:gap-5"
               >
                 <div className="xl:w-[170px] xl:h-[170px] xl:min-w-[170px]">
                   <img src={cartItem.image} className="w-full h-full" />
                 </div>
-                <div className="flex flex-col w-full">
+                <div className="flex flex-col w-full pl-2 lg:pl-0">
                   <span className="font-semibold xl:text-[20px] xl:pb-1">
                     {cartItem.name}
                   </span>
@@ -55,8 +57,16 @@ export default function Cart() {
                       .join(",") + " zł"}
                   </span>
                   <QuickCartCount count={cartItem.quantity} />
+                  <div className="lg:hidden flex justify-end pt-8">
+                    <span
+                      className="underline font-semibold text-[14px]"
+                      onClick={() => deleteItemFromCart(cartItem.name)}
+                    >
+                      USUŃ
+                    </span>
+                  </div>
                 </div>
-                <div className="flex items-start">
+                <div className="hidden lg:flex items-start">
                   <span
                     className="underline font-semibold text-[14px]"
                     onClick={() => deleteItemFromCart(cartItem.name)}
@@ -75,7 +85,48 @@ export default function Cart() {
             </span>
           </div>
         </div>
-        <div></div>
+        <div className="xl:w-[445px] lg:w-[390px] xl:text-[16px]">
+          <div className="flex justify-between pb-3">
+            <span>Cena produktów</span>
+            <span>{totalCost()} zł</span>
+          </div>
+          <div className="flex justify-between pb-3">
+            <span>Dostawa</span>
+            <span>od 0 zł</span>
+          </div>
+          <div className="flex justify-between xl:text-[20px] font-semibold">
+            <span>Łączna kwota</span>
+            <span>{totalCost()} zł</span>
+          </div>
+          <span>z VAT</span>
+          <div className="w-[80%] mx-auto pt-9 pb-14">
+            <CtaButton
+              text="Przejdz do kasy"
+              background="bg-[#2A4746]"
+              color="text-white"
+            />
+          </div>
+          <div className="flex items-center pl-2 xl:w-[234px] mx-auto pb-14">
+            <input
+              type="text"
+              placeholder="Wpisz kod"
+              className=" bg-[#F9F8F9] indent-2 border-b border-black outline-none w-full placeholder:text-black"
+            ></input>
+            <button className="border-2 rounded-xl border-[#2A4746] xl:w-[85px] h-auto">
+              Dodaj
+            </button>
+          </div>
+          <div className="flex gap-3 pb-3">
+            <img src={alertIcon} />
+            <span>
+              Odbiór osobisty w punkcie odbioru w Białystoku zawsze za darmo.
+            </span>
+          </div>
+          <div className="flex gap-3">
+            <img src={truckIcon} />
+            <span>Darmowa dostawa dla zamówień powyżej 200 zł.</span>
+          </div>
+        </div>
       </div>
     </div>
   );

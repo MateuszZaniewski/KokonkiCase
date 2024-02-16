@@ -42,7 +42,7 @@ export default function Footer() {
   ];
 
   return (
-    <div className="xl:py-10">
+    <div className="xl:py-10 ">
       <div className="xl:pl-16 pl-2">
         <img
           src={logo}

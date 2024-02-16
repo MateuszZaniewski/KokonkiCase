@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { useCartStore } from "../store/store";
 import Navbar from "./../components/Navbar";
 import Links from "./../components/Links";
@@ -13,8 +12,7 @@ export default function CheckoutPage() {
       <Navbar />
       <Links />
       <Cart />
-      <Link to="/">Home</Link>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }
