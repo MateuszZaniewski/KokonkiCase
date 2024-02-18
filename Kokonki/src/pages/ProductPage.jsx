@@ -59,7 +59,7 @@ export default function ProductPage() {
         setVisibleHamburgerMenu,
       }}
     >
-      <div className="font-inter bg-[#F9F8F9] max-w-[1440px] mx-auto xl:min-h-[100vh]">
+      <div className="mx-auto max-w-[1440px] bg-[#F9F8F9] font-inter xl:min-h-[100vh]">
         {showAddedToCardModal ? <AddedToCardModal /> : null}
 
         <Navbar />

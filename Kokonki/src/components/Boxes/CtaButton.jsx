@@ -3,7 +3,7 @@ export default function CtaButton({ text, background, color }) {
     <button
       className={`${
         background ? background : "bg-[#FFFFFF]"
-      } ${color} border-2 border-[#2A4746] rounded-full px-7 py-2 xl:min-w-[355px] hover:opacity-90 ${
+      } ${color} rounded-full border-2 border-[#2A4746] px-7 py-2 hover:opacity-90 xl:min-w-[355px] ${
         background === `bg-transparent`
           ? `hover:bg-[#2A4746] hover:text-white`
           : ``

@@ -13,17 +13,17 @@ export default function Delivery({ visiblePage, setVisiblePage }) {
   return (
     <div
       onClick={() => setVisiblePage(3)}
-      className="xl:w-[538px] border-b-2 border-black py-4"
+      className="border-b-2 border-black py-4 xl:w-[538px]"
     >
-      <div className="flex justify-between cursor-pointer">
-        <span className="uppercase xl:text-[13px] font-bold">
+      <div className="flex cursor-pointer justify-between">
+        <span className="font-bold uppercase xl:text-[13px]">
           Dostawa i zwroty
         </span>
         <img src={visiblePage === 3 ? arrowUpIcon : arrowDownIcon} />
       </div>
 
-      <div className={`${visiblePage === 3 ? "block" : "hidden"} pt-3 pl-5`}>
-        <h2 className="font-bold pt-5 pb-3">Formy dostawy</h2>
+      <div className={`${visiblePage === 3 ? "block" : "hidden"} pl-5 pt-3`}>
+        <h2 className="pb-3 pt-5 font-bold">Formy dostawy</h2>
         <PricedDelivery
           operator="Poczta Polska odbiór w punkcie - 8,90 zł"
           time="2-5 dni roboczych"
@@ -54,8 +54,8 @@ export default function Delivery({ visiblePage, setVisiblePage }) {
         </div>
       </div>
 
-      <div className={`${visiblePage === 3 ? "block" : "hidden"} pt-3 pl-5`}>
-        <h2 className="font-bold pt-5 pb-3">Warunki zwrotów</h2>
+      <div className={`${visiblePage === 3 ? "block" : "hidden"} pl-5 pt-3`}>
+        <h2 className="pb-3 pt-5 font-bold">Warunki zwrotów</h2>
         <p className=" pb-3">
           Możesz odstąpić od umowy zawartej na odległość bez podawania przyczyny
           w ciągu 14 dni. Odeślij do nas towar w ciągu kolejnych 14 dni, licząc

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function Links() {
   return (
-    <div className="hidden md:flex gap-12 xl:gap-20 justify-center pt-5">
+    <div className="hidden justify-center gap-12 pt-5 md:flex xl:gap-20">
       <Link to={"/nowosci"} className="hover:text-[#F6C48F]">
         Nowości
       </Link>

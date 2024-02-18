@@ -15,7 +15,6 @@ export default function QuickCart() {
   const { product, setCart, visibleQuickCart, setVisibleQuickCart } =
     useContext(AppContext);
   const cart = useCartStore((state) => state.cart);
-  console.log(cart);
   const deleteItemFromCart = useCartStore((state) => state.deleteItem);
   const root = document.querySelector("#root");
 
@@ -32,17 +31,21 @@ export default function QuickCart() {
   }, [visibleQuickCart, root]);
 
   const totalCost = () => {
-    const total = cart.reduce((acc, item) => {
-      return acc + item.price * item.quantity;
-    }, 0);
-    return total;
+    if (cart && cart.length > 0) {
+      const totalCost = cart.reduce((acc, currentItem) => {
+        return acc + currentItem.quantity * currentItem.price;
+      }, 0);
+      return totalCost;
+    } else {
+      return 0;
+    }
   };
 
   const handleCountChange = (productId, newCount) => {
     setCart((prevCart) => {
       const updatedCart = [...prevCart];
       const productIndex = updatedCart.findIndex(
-        (item) => item.product.id === productId
+        (item) => item.product.id === productId,
       );
 
       if (productIndex !== -1) {
@@ -56,10 +59,10 @@ export default function QuickCart() {
   const EmptyCart = () => {
     return (
       <>
-        <div className="xl:py-24 font-semibold xl:text-[14px] py-14 text-center">
+        <div className="py-14 text-center font-semibold xl:py-24 xl:text-[14px]">
           <span>TWÓJ KOSZYK JEST PUSTY</span>
         </div>
-        <div className="flex flex-col justify-center items-center gap-5">
+        <div className="flex flex-col items-center justify-center gap-5">
           <CtaButton
             text="Przeglądaj włóczki"
             background="bg-[#2A4746]"
@@ -78,21 +81,21 @@ export default function QuickCart() {
       return (
         <>
           <div>
-            <ul className="xl:min-h-[470px] overflow-scroll no-scrollbar">
+            <ul className="no-scrollbar overflow-scroll xl:min-h-[470px]">
               {cart.map((cartItem) => {
                 return (
                   <li
                     key={cartItem.name}
-                    className="flex xl:py-10 xl:w-[90%] xl:mx-auto xl:gap-5 border-b-2 border-black"
+                    className="flex border-b-2 border-black xl:mx-auto xl:w-[90%] xl:gap-5 xl:py-10"
                   >
-                    <div className="xl:w-[170px] xl:h-[170px] xl:min-w-[170px]">
-                      <img src={cartItem.image} className="w-full h-full" />
+                    <div className="xl:h-[170px] xl:w-[170px] xl:min-w-[170px]">
+                      <img src={cartItem.image} className="h-full w-full" />
                     </div>
-                    <div className="flex flex-col w-full">
-                      <span className="font-semibold xl:text-[20px] xl:pb-1">
+                    <div className="flex w-full flex-col">
+                      <span className="font-semibold xl:pb-1 xl:text-[20px]">
                         {cartItem.name}
                       </span>
-                      <span className="xl:text-[16px] xl:pb-5">
+                      <span className="xl:pb-5 xl:text-[16px]">
                         {(cartItem.price * cartItem.quantity)
                           .toString()
                           .split(".")
@@ -115,16 +118,16 @@ export default function QuickCart() {
               })}
             </ul>
           </div>
-          <div className="pt-5 border-t-2 border-black">
-            <div className="w-[70%] mx-auto flex justify-between pb-2">
+          <div className="border-t-2 border-black pt-5">
+            <div className="mx-auto flex w-[70%] justify-between pb-2">
               <span>DOSTAWA</span>
               <span>od 0,00 zł</span>
             </div>
-            <div className="w-[70%] mx-auto font-bold flex justify-between pb-10">
+            <div className="mx-auto flex w-[70%] justify-between pb-10 font-bold">
               <span>ŁĄCZNA KWOTA</span>
               {totalCost() + " zł"}
             </div>
-            <div className="flex justify-center w-[70%] mx-auto">
+            <div className="mx-auto flex w-[70%] justify-center">
               <Link to="/checkout">
                 <CtaButton
                   text="Zobacz koszyk"
@@ -144,11 +147,11 @@ export default function QuickCart() {
       <div className="">
         <div
           onClick={() => setVisibleQuickCart(false)}
-          className="absolute z-10 top-0 right-0 w-[100vw] h-[100vh] bg-transparent backdrop-blur-[2px] brightness-50"
+          className="absolute right-0 top-0 z-10 h-[100vh] w-[100vw] bg-transparent brightness-50 backdrop-blur-[2px]"
         ></div>
-        <div className="max-w-[1440px] relative">
-          <div className=" absolute top-0 right-0 z-10 w-[492px] h-[810px] rounded-xl bg-[#F9F8F9] flex flex-col">
-            <div className="flex justify-between px-5 py-6 border-b-2 border-black">
+        <div className="relative max-w-[1440px]">
+          <div className=" absolute right-0 top-0 z-10 flex h-[810px] w-[492px] flex-col rounded-xl bg-[#F9F8F9]">
+            <div className="flex justify-between border-b-2 border-black px-5 py-6">
               <span>KOSZYK</span>
               <img
                 src={closeIcon}
@@ -156,7 +159,7 @@ export default function QuickCart() {
                 onClick={() => setVisibleQuickCart(false)}
               />
             </div>
-            <div className="flex justify-center py-3 border-b-2 border-black">
+            <div className="flex justify-center border-b-2 border-black py-3">
               <span>
                 {" "}
                 {200 - totalCost() > 0
@@ -164,7 +167,6 @@ export default function QuickCart() {
                       200 - cart[0].price * cart[0].quantity
                     } zł`
                   : "Brawo, masz darmową dostawę!"}{" "}
-                {/* UPDATE CART.PRICE to have only numbers without zl */}
               </span>
             </div>
             {cart.length > 0 ? <PopulatedCart /> : <EmptyCart />}

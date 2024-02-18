@@ -11,14 +11,14 @@ export default function ProductOverview() {
   if (product) {
     return (
       <div className="flex-col">
-        <div className="flex xl:flex-row flex-col pt-28 xl:px-14 gap-24 relative">
+        <div className="relative flex flex-col gap-24 pt-28 xl:flex-row xl:px-14">
           <ProductImages />
           <ProductVariants />
         </div>
-        <div className="xl:w-1/2 xl:block">
+        <div className="xl:block xl:w-1/2">
           <ProductInformation />
         </div>
-        <div className="flex flex-wrap xl:flex-nowrap md:w-[450px] lg:w-[600px] mx-auto xl:w-full xl:px-5">
+        <div className="mx-auto flex flex-wrap md:w-[450px] lg:w-[600px] xl:w-full xl:flex-nowrap xl:px-5">
           <ProductRelated />
         </div>
         <div>

@@ -18,7 +18,7 @@ export default function Pagination({ opinions }) {
                   </div>
                 );
               }
-            })
+            }),
           )}
       </div>
     );
@@ -38,7 +38,7 @@ export default function Pagination({ opinions }) {
     const handlePageClick = (event) => {
       const newOffset = (event.selected * itemsPerPage) % items.length;
       console.log(
-        `User requested page number ${event.selected}, which is offset ${newOffset}`
+        `User requested page number ${event.selected}, which is offset ${newOffset}`,
       );
       setItemOffset(newOffset);
     };
@@ -47,7 +47,7 @@ export default function Pagination({ opinions }) {
       <>
         <Items currentItems={currentItems} opinions={opinions} />
         <ReactPaginate
-          className="flex justify-center items-center gap-5 xl:py-14 py-4 md:w-[450px] lg:w-[600px] mx-auto"
+          className="mx-auto flex items-center justify-center gap-5 py-4 md:w-[450px] lg:w-[600px] xl:py-14"
           nextLabel=">"
           onPageChange={handlePageClick}
           pageRangeDisplayed={3}

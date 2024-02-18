@@ -4,16 +4,16 @@ export default function Info({ visiblePage, setVisiblePage, product }) {
   return (
     <div
       onClick={() => setVisiblePage(1)}
-      className="xl:w-[538px] border-b-2 border-black py-4"
+      className="border-b-2 border-black py-4 xl:w-[538px]"
     >
-      <div className="flex justify-between cursor-pointer">
-        <span className="uppercase xl:text-[13px] font-bold">
+      <div className="flex cursor-pointer justify-between">
+        <span className="font-bold uppercase xl:text-[13px]">
           Opis produktu
         </span>
         <img src={visiblePage === 1 ? arrowUpIcon : arrowDownIcon} />
       </div>
 
-      <div className={`${visiblePage === 1 ? "block" : "hidden"} pt-3 pl-5`}>
+      <div className={`${visiblePage === 1 ? "block" : "hidden"} pl-5 pt-3`}>
         <p className=" whitespace-pre-wrap">{product[0].description}</p>
       </div>
     </div>

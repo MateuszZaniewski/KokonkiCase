@@ -5,14 +5,14 @@ export default function Details({ visiblePage, setVisiblePage, product }) {
   return (
     <div
       onClick={() => setVisiblePage(2)}
-      className="xl:w-[538px] border-b-2 border-black py-4"
+      className="border-b-2 border-black py-4 xl:w-[538px]"
     >
-      <div className="flex justify-between cursor-pointer">
-        <span className="uppercase xl:text-[13px] font-bold">Szczególy</span>
+      <div className="flex cursor-pointer justify-between">
+        <span className="font-bold uppercase xl:text-[13px]">Szczególy</span>
         <img src={visiblePage === 2 ? arrowUpIcon : arrowDownIcon} />
       </div>
 
-      <div className={`${visiblePage === 2 ? "block" : "hidden"} pt-3 px-5`}>
+      <div className={`${visiblePage === 2 ? "block" : "hidden"} px-5 pt-3`}>
         <div className="flex-col">
           <DetailsSingleRow category="Materiał: " text={product[0].material} />
           <DetailsSingleRow

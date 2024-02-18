@@ -1,8 +1,8 @@
 export default function Prices({ priceNow, priceLast, priceMonth }) {
   return (
     <div>
-      <div className="flex xl:gap-9 gap-3">
-        <div className="xl:text-[31px] flex items-end">
+      <div className="flex gap-3 xl:gap-9">
+        <div className="flex items-end xl:text-[31px]">
           <span>{priceNow.toFixed(2)} zł</span>
         </div>
         <div className="flex items-end line-through ">

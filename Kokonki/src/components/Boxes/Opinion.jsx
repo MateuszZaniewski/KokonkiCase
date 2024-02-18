@@ -4,13 +4,13 @@ import trustIcon from "../../assets/trustMate.png";
 export default function Opinion({ value }) {
   return (
     <>
-      <div className="hidden xl:flex xl:px-10 xl:py-14 border-b-2 border-black ">
+      <div className="hidden border-b-2 border-black xl:flex xl:px-10 xl:py-14 ">
         <div className="flex">
           <div className="w-1/4">
             {value.image.length > 0 ? (
-              <img className="xl:w-[160px] xl:h-[160px]" src={value.image} />
+              <img className="xl:h-[160px] xl:w-[160px]" src={value.image} />
             ) : (
-              <div className="xl:w-[160px] xl:h-[160px]"></div>
+              <div className="xl:h-[160px] xl:w-[160px]"></div>
             )}
           </div>
           <div className="w-3/4 pl-7">
@@ -18,7 +18,7 @@ export default function Opinion({ value }) {
               <Star rating={value.rate} />
               <div className={value.trust ? "block" : "hidden"}>
                 <img
-                  className="xl:w-[144px] xl:h-[28px] w-10 h-5"
+                  className="h-5 w-10 xl:h-[28px] xl:w-[144px]"
                   src={trustIcon}
                 />
               </div>
@@ -35,13 +35,13 @@ export default function Opinion({ value }) {
         </div>
       </div>
 
-      <div className="flex xl:hidden px-4 py-8 border-b-2 border-black md:w-[450px] lg:w-[600px] mx-auto">
+      <div className="mx-auto flex border-b-2 border-black px-4 py-8 md:w-[450px] lg:w-[600px] xl:hidden">
         <div className="flex flex-col flex-wrap xl:hidden">
           <div className="">
             {value.image.length > 0 ? (
-              <img className="w-[150px] h-[150px]" src={value.image} />
+              <img className="h-[150px] w-[150px]" src={value.image} />
             ) : (
-              <div className="w-[160px] h-[160px]"></div>
+              <div className="h-[160px] w-[160px]"></div>
             )}
           </div>
           <div className="">
@@ -49,7 +49,7 @@ export default function Opinion({ value }) {
               <Star rating={value.rate} />
               <div className={value.trust ? "block" : "hidden"}>
                 <img
-                  className="xl:w-[144px] xl:h-[28px] w-28 h-10"
+                  className="h-10 w-28 xl:h-[28px] xl:w-[144px]"
                   src={trustIcon}
                 />
               </div>

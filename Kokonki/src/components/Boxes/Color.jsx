@@ -10,7 +10,7 @@ export default function Color({ color }) {
     return (
       <div
         style={containerStyle}
-        className=" hover:scale-110 hover:border-2 hover:border-black cursor-pointer"
+        className=" cursor-pointer hover:scale-110 hover:border-2 hover:border-black"
       ></div>
     );
   }

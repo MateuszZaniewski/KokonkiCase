@@ -43,13 +43,13 @@ export default function Footer() {
 
   return (
     <div className="xl:py-10 ">
-      <div className="xl:pl-16 pl-2">
+      <div className="pl-2 xl:pl-16">
         <img
           src={logo}
-          className="w-[18.7wv] h-[10vw] md:h-[5vw] lg:h-[4vw] xl:h-[4.2vw] max-w-[340px] max-h-[60px]"
+          className="h-[10vw] max-h-[60px] w-[18.7wv] max-w-[340px] md:h-[5vw] lg:h-[4vw] xl:h-[4.2vw]"
         />
       </div>
-      <div className="mx-auto flex flex-col md:flex-row md:flex-wrap lg:flex-nowrap gap-4 md:gap-8 lg:gap-10 xl:gap-20 lg:justify-around pt-10 text-[#222220] px-[4vw] md:px-[7vw] lg:px-[10vw] xl:px-[13.6vw]">
+      <div className="mx-auto flex flex-col gap-4 px-[4vw] pt-10 text-[#222220] md:flex-row md:flex-wrap md:gap-8 md:px-[7vw] lg:flex-nowrap lg:justify-around lg:gap-10 lg:px-[10vw] xl:gap-20 xl:px-[13.6vw]">
         <ul>
           {shopLinks.map((link) => (
             <li className={listClass} key={link}>

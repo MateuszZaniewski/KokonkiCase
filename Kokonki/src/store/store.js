@@ -3,12 +3,20 @@ import { persist } from "zustand/middleware";
 
 export const useCartStore = create(
   persist(
-    (set, get) => ({
+    (set) => ({
       cart: [],
+      step: 0,
+      nextStep: (next) => set((state) => ({ step: (state.step = next) })),
+      prevStep: (prev) => set((state) => ({ step: (state.step = prev) })),
+      resetStep: () => {
+        set((state) => {
+          return { ...state, step: 0 };
+        });
+      },
       addToCart: (item, quantity, price, image) =>
         set((state) => {
           const existingItemIndex = state.cart.findIndex(
-            (cartItem) => cartItem.name === item
+            (cartItem) => cartItem.name === item,
           );
           if (existingItemIndex !== -1) {
             const updatedCart = [...state.cart];
@@ -28,18 +36,10 @@ export const useCartStore = create(
             };
           }
         }),
-      calculateTotalCost: () => {
-        set((state) => {
-          const totalCost = state.cart.reduce((acc, currentItem) => {
-            return acc + currentItem.quantity * currentItem.price;
-          }, 0);
-          return totalCost;
-        });
-      },
       increaseQuantity: (item, amount) => {
         set((state) => {
           const existingItemIndex = state.cart.findIndex(
-            (cartItem) => cartItem.name === item
+            (cartItem) => cartItem.name === item,
           );
           if (existingItemIndex !== -1) {
             const updatedCart = [...state.cart];
@@ -53,7 +53,7 @@ export const useCartStore = create(
       decreaseQuantity: (item, amount) => {
         set((state) => {
           const existingItemIndex = state.cart.findIndex(
-            (cartItem) => cartItem.name === item
+            (cartItem) => cartItem.name === item,
           );
           if (existingItemIndex !== -1) {
             const updatedCart = [...state.cart];
@@ -73,16 +73,16 @@ export const useCartStore = create(
     }),
     {
       name: "cart-state",
-      getStorage: () => sessionStorage,
-    }
-  )
+      getStorage: () => localStorage,
+    },
+  ),
 );
 
-export const useProductStore = create((set) => ({
-  productName: "",
-  changeProductName: (name) =>
-    set((state) => ({ productName: (state.productName = name) })),
-}));
+// export const useProductStore = create((set) => ({
+//   productName: "",
+//   changeProductName: (name) =>
+//     set((state) => ({ productName: (state.productName = name) })),
+// }));
 
 export const useVisibilityStore = create((set) => ({
   visiblePage: 1,

@@ -18,7 +18,7 @@ export default function ProductImages() {
   if (product && product.length > 0 && product[0].images) {
     return (
       <>
-        <div className="hidden xl:flex xl:flex-row gap-5 xl:min-w-[674px] w-full">
+        <div className="hidden w-full gap-5 xl:flex xl:min-w-[674px] xl:flex-row">
           <div className="hidden xl:flex xl:flex-col xl:space-y-5">
             {product[0].images.map((image) => (
               <img
@@ -34,17 +34,17 @@ export default function ProductImages() {
           </div>
         </div>
 
-        <div className="xl:hidden px-3">
+        <div className="px-3 xl:hidden">
           <div className="flex justify-center">
             <img
               src={activeImage}
-              className="h-[270px] w-[270px] md:h-[300px] md:w-[300px] lg:h-[400px] lg:w-[400px] max-h-[500px] max-w-[500px] rounded-md"
+              className="h-[270px] max-h-[500px] w-[270px] max-w-[500px] rounded-md md:h-[300px] md:w-[300px] lg:h-[400px] lg:w-[400px]"
             />
           </div>
           <div className="flex justify-center">
-            <div className="flex overflow-x-auto gap-4 pt-4 justify-start px-1">
+            <div className="flex justify-start gap-4 overflow-x-auto px-1 pt-4">
               {product[0].images.map((image) => (
-                <div key={image} className="h-24 w-24 min-h-24 min-w-24">
+                <div key={image} className="h-24 min-h-24 w-24 min-w-24">
                   <img
                     src={image}
                     className="h-full w-full cursor-pointer object-cover"

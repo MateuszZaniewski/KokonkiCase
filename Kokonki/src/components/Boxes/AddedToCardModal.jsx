@@ -1,21 +1,23 @@
 import closeIcon from "../../assets/close.svg";
 import { AppContext } from "../../context/AppContext";
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 
 export default function AddedToCardModal() {
   const { product, quantity, setShowAddedToCardModal } = useContext(AppContext);
+
   if (product && product.length > 0) {
     return (
       <div>
         <div
           onClick={() => setShowAddedToCardModal(false)}
-          className="fixed z-10 top-0 right-0 w-[100vw] h-[100vh] bg-transparent backdrop-blur-[2px] brightness-50"
+          className="fixed right-0 top-0 z-10 h-[100vh] w-[100vw] bg-transparent brightness-50 backdrop-blur-[2px]"
         ></div>
         <div
-          className={`fixed xl:top-1/2 top-1/4 left-1/2 transform -translate-x-1/2 xl:-translate-y-1/2 -translate-y-1/4 z-10 xl:w-[600px] h-auto bg-[#F9F8F9] rounded-xl`}
+          className={`fixed left-1/2 top-1/4 z-10 h-auto -translate-x-1/2 -translate-y-1/4 transform rounded-xl bg-[#F9F8F9] xl:top-1/2 xl:w-[600px] xl:-translate-y-1/2`}
         >
-          <div className="flex flex-col h-full xl:px-[97px] xl:pt-12 px-4 py-4 w-[80vmin] xl:w-auto ">
-            <div className="flex justify-between items-center xl:pb-8 pb-4">
+          <div className="flex h-full w-[80vmin] flex-col px-4 py-4 xl:w-auto xl:px-[97px] xl:py-12 ">
+            <div className="flex items-center justify-between pb-4 xl:pb-8">
               <span>DODANO DO KOSZYKA</span>
               <img
                 onClick={() => setShowAddedToCardModal(false)}
@@ -23,21 +25,21 @@ export default function AddedToCardModal() {
                 className="h-[10px] w-[10px]"
               />
             </div>
-            <div className="flex flex-col md:flex-row xl:flex-row xl:gap-5 gap-3 mx-auto md:mx-0">
+            <div className="mx-auto flex flex-col gap-3 md:mx-0 md:flex-row xl:flex-row xl:gap-5">
               <div>
                 <img
                   src={product[0].images[0]}
-                  className="xl:w-[170px] xl:h-[170px] w-[220px] h-[220px]"
+                  className="h-[220px] w-[220px] xl:h-[170px] xl:w-[170px]"
                 />
               </div>
               <div>
-                <div className="flex flex-col w-full">
-                  <span className="font-semibold text-[20px] xl:pb-1">
+                <div className="flex w-full flex-col">
+                  <span className="text-[20px] font-semibold xl:pb-1">
                     {product[0].name}
                   </span>
                   <span className="pb-5">średni brąz (mix 0612)</span>
                   <span className="pb-1">{"Ilość: " + quantity}</span>
-                  <span className="text-[16px] pb-5">
+                  <span className="pb-5 text-[16px]">
                     {"Cena: " +
                       product[0].pricenow.toString().split(".").join(",") +
                       " zł"}
@@ -45,20 +47,22 @@ export default function AddedToCardModal() {
                 </div>
               </div>
             </div>
-            <div className="flex gap-5 justify-center xl:gap-4 xl:pt-[30px] md:pt-5">
+            <div className="flex justify-center gap-5 md:pt-5 xl:gap-4 xl:pt-[30px]">
               <button
                 onClick={() => setShowAddedToCardModal(false)}
-                className={`border-2 border-[#2A4746] xl:max-w-[194px] rounded-full xl:py-[10px] xl:px-[15px] hover:opacity-90`}
+                className={`rounded-full border-2 border-[#2A4746] hover:opacity-90 xl:max-w-[194px] xl:px-[15px] xl:py-[10px]`}
               >
                 Kontynuuj zakupy
               </button>
 
-              <button
-                onClick={() => setShowAddedToCardModal(false)}
-                className={`border-2 border-[#2A4746] xl:max-w-[194px] bg-[#2A4746] text-white rounded-full xl:py-[10px] xl:px-[15px] hover:opacity-90`}
-              >
-                Przejdź do koszyka
-              </button>
+              <Link to="/checkout">
+                <button
+                  onClick={() => setShowAddedToCardModal(false)}
+                  className={`rounded-full border-2 border-[#2A4746] bg-[#2A4746] text-white hover:opacity-90 xl:max-w-[194px] xl:px-[15px] xl:py-[10px]`}
+                >
+                  Przejdź do koszyka
+                </button>
+              </Link>
             </div>
           </div>
         </div>

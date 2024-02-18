@@ -47,47 +47,47 @@ export default function Navbar() {
 
   return (
     <nav>
-      <div className="flex justify-between items-center pt-2 ">
+      <div className="flex items-center justify-between pt-2 ">
         {/* HamburgerMenu section */}
         <div
           onClick={() => hideMenu()}
           className={`${
             visibleHamburgerMenu
-              ? "fixed z-10 top-0 right-0 w-[100vw] h-[100vh] bg-transparent backdrop-blur-[2px] brightness-50"
+              ? "fixed right-0 top-0 z-10 h-[100vh] w-[100vw] bg-transparent brightness-50 backdrop-blur-[2px]"
               : "hidden"
           }`}
         ></div>
         <div
           className={`${
             visibleHamburgerMenu
-              ? "absolute right-0 top-0 z-10 bg-[#F9F8F9] h-[100vmax] w-1/2 min-w-[300px] overflow-y-auto"
+              ? "absolute right-0 top-0 z-10 h-[100vmax] w-1/2 min-w-[300px] overflow-y-auto bg-[#F9F8F9]"
               : "hidden"
           }`}
         >
-          <div className="flex flex-col w-full pt-5">
-            <div className="flex justify-end w-full px-2">
+          <div className="flex w-full flex-col pt-5">
+            <div className="flex w-full justify-end px-2">
               <img
                 onClick={() => hideMenu()}
                 className="h-8 w-8"
                 src={closeIcon}
               />
             </div>
-            <div className=" pl-2 py-4">
+            <div className=" py-4 pl-2">
               <div className="flex items-center border-b pb-1 pl-2">
                 <img src={searchIcon} className=" h-5 w-5" />
                 <input
                   type="search"
                   placeholder="Szukaj"
-                  className=" bg-[#F9F8F9] indent-2 outline-none w-full"
+                  className=" w-full bg-[#F9F8F9] indent-2 outline-none"
                 ></input>
               </div>
             </div>
-            <ul className="flex flex-col py-5 gap-5 border-b border-black">
+            <ul className="flex flex-col gap-5 border-b border-black py-5">
               {categoryLinks.map((e) => {
                 return (
                   <div
                     key={e}
-                    className="flex justify-between pl-5 pr-2 pb-1 border-b"
+                    className="flex justify-between border-b pb-1 pl-5 pr-2"
                   >
                     <Link className="hover:text-[#F6C48F]">{e}</Link>
                     <img src={rightArrowIcon} className="h-5 w-5" />
@@ -95,12 +95,12 @@ export default function Navbar() {
                 );
               })}
             </ul>
-            <ul className="flex flex-col py-5 gap-5">
+            <ul className="flex flex-col gap-5 py-5">
               {interLinks.map((e) => {
                 return (
                   <div
                     key={e}
-                    className="flex justify-between pl-5 pr-2 pb-1 border-b"
+                    className="flex justify-between border-b pb-1 pl-5 pr-2"
                   >
                     <Link to="/checkout" className="hover:text-[#F6C48F]">
                       {e}
@@ -113,24 +113,24 @@ export default function Navbar() {
           </div>
         </div>
         {/* Search section */}
-        <div className="xl:pl-14 md:pl-5 xl:min-w-52 xl:w-[25%]  ">
-          <div className="md:flex items-center border-b border-b-black pb-1 hidden">
+        <div className="md:pl-5 xl:w-[25%] xl:min-w-52 xl:pl-14  ">
+          <div className="hidden items-center border-b border-b-black pb-1 md:flex">
             <img src={searchIcon} className=" h-5 w-5" />
             <input
               placeholder="Szukaj"
-              className="placeholder:text-black bg-[#F9F8F9] indent-2 outline-none"
+              className="bg-[#F9F8F9] indent-2 outline-none placeholder:text-black"
             ></input>
           </div>
         </div>
         {/* Logo section */}
-        <div className="w-full flex justify-center">
+        <div className="flex w-full justify-center">
           <Link to="/">
-            <img src={logo} className="lg:w-[20rem] w-48 lg:h-auto" />
+            <img src={logo} className="w-48 lg:h-auto lg:w-[20rem]" />
           </Link>
         </div>
         <div className="hidden md:flex">
           {/* User, Fav, Cart section */}
-          <div className="flex gap-9 xl:pr-14 pr-10 w-auto">
+          <div className="flex w-auto gap-9 pr-10 xl:pr-14">
             <div className="md:w-[40px]">
               <img
                 src={userIcon}
@@ -149,7 +149,7 @@ export default function Navbar() {
                 className=" h-6 w-6 cursor-pointer hover:scale-110"
                 onClick={() => setVisibleQuickCart(true)}
               />
-              ({cart.length})
+              ({cart && cart.length})
             </div>
           </div>
         </div>

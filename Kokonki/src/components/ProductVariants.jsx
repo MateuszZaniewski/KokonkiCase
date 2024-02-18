@@ -22,7 +22,7 @@ export default function ProductVariants() {
   const addToCart = (product, quantity, price, image) => {
     addItemToCart(product.name, quantity, price, image);
     const existingProductIndex = cart.findIndex(
-      (item) => item.product.id === product.id
+      (item) => item.product.id === product.id,
     );
 
     if (existingProductIndex !== -1) {
@@ -37,7 +37,7 @@ export default function ProductVariants() {
 
   if (product && product.length > 0) {
     return (
-      <div className="w-full md:w-[450px] lg:w-[600px] xl:w-fit mx-auto xl:mx-0">
+      <div className="mx-auto w-full md:w-[450px] lg:w-[600px] xl:mx-0 xl:w-fit">
         <div className="hidden xl:block xl:w-[500px]">
           <Promotion text="Promocja" visible={true} />
           <div className="pt-2">{product[0].category}</div>
@@ -66,7 +66,7 @@ export default function ProductVariants() {
                 product[0],
                 quantity,
                 product[0].pricenow,
-                product[0].images[0]
+                product[0].images[0],
               )
             }
           >
@@ -82,7 +82,7 @@ export default function ProductVariants() {
           </div>
         </div>
 
-        <div className="xl:hidden flex flex-col px-5">
+        <div className="flex flex-col px-5 xl:hidden">
           <Promotion text="Promocja" visible={true} />
           <div className="pt-4">{product[0].category}</div>
           <div className="flex flex-col gap-5">
@@ -116,7 +116,7 @@ export default function ProductVariants() {
                 product[0],
                 quantity,
                 product[0].pricenow,
-                product[0].images[0]
+                product[0].images[0],
               )
             }
           >

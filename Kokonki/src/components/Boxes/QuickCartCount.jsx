@@ -3,11 +3,11 @@ import { useCartStore } from "../../store/store";
 export default function QuickCartCount() {
   const cart = useCartStore((state) => state.cart);
   const increaseQuantity = useCartStore((state) => state.increaseQuantity);
-  const decreseQuantity = useCartStore((state) => state.decreseQuantity);
+  const decreaseQuantity = useCartStore((state) => state.decreaseQuantity);
 
   const handleDecrease = () => {
     if (cart[0].quantity > 1) {
-      decreseQuantity(cart[0].name, 1);
+      decreaseQuantity(cart[0].name, 1);
     }
   };
 
@@ -25,19 +25,19 @@ export default function QuickCartCount() {
   return (
     <div className="flex">
       <button
-        className="text-2xl border border-black rounded-tl-2xl rounded-bl-2xl px-2"
+        className="rounded-bl-2xl rounded-tl-2xl border border-black px-2 text-2xl"
         onClick={handleDecrease}
       >
         -
       </button>
       <input
-        className="w-14 text-center border-b border-t border-black bg-transparent"
+        className="w-14 border-b border-t border-black bg-transparent text-center"
         type="number"
         value={cart[0].quantity}
         onChange={handleChange}
       ></input>
       <button
-        className="text-2xl border border-black rounded-tr-2xl rounded-br-2xl px-2"
+        className="rounded-br-2xl rounded-tr-2xl border border-black px-2 text-2xl"
         onClick={handleIncrease}
       >
         +

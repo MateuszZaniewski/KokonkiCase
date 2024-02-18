@@ -14,7 +14,7 @@ export default function Count() {
         -
       </button>
       <input
-        className=" w-14 text-center border border-black"
+        className=" w-14 border border-black text-center"
         type="number"
         value={quantity}
         onChange={() => setQuantity(quantity)}

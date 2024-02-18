@@ -12,7 +12,7 @@ export default function ProductOpinions() {
     });
 
     return (
-      <div className="flex xl:flex-row flex-col xl:pl-14 pt-10 px-4 xl:pb-11 xl:pt-16 md:w-[450px] lg:w-[600px] mx-auto xl:w-full">
+      <div className="mx-auto flex flex-col px-4 pt-10 md:w-[450px] lg:w-[600px] xl:w-full xl:flex-row xl:pb-11 xl:pl-14 xl:pt-16">
         <div className=" xl:w-1/2">
           <div className="pb-2">
             <Star
@@ -30,7 +30,7 @@ export default function ProductOpinions() {
             </div>
             <div>
               <button
-                className={`border-2 border-[#2A4746] rounded-full px-7 py-2 w-fit hover:bg-[#2A4746] hover:text-white`}
+                className={`w-fit rounded-full border-2 border-[#2A4746] px-7 py-2 hover:bg-[#2A4746] hover:text-white`}
               >
                 Dodaj opinię
               </button>

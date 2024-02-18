@@ -1,7 +1,7 @@
 export default function Promotion({ text, visible }) {
   if (visible) {
     return (
-      <div className="bg-[#821232] rounded-xl px-[10px] py-[2px] text-white uppercase w-fit">
+      <div className="w-fit rounded-xl bg-[#821232] px-[10px] py-[2px] uppercase text-white">
         {text}
       </div>
     );
