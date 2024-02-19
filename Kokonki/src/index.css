@@ -122,3 +122,23 @@ Note: Beware of modifying this element as it can break the animations - you shou
 input::-webkit-search-cancel-button {
   padding-right: 5%;
 }
+
+.css-13cymwt-control {
+  background-color: #f9f8f9;
+  border-style: none;
+}
+
+.css-1xc3v61-indicatorContainer {
+  background-color: #f9f8f9;
+  border: none;
+}
+
+.css-1dimb5e-singleValue {
+  background-color: #f9f8f9;
+  border: none;
+}
+
+.css-art2ul-ValueContainer2 {
+  background-color: #f9f8f9;
+  border: none;
+}

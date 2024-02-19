@@ -2,7 +2,7 @@ import { useCartStore } from "../../store/store";
 import Products from "./Products";
 import Summary from "./Summary";
 import SummaryWithOrder from "./SummaryWithOrder";
-import CartStep1 from "./CartStep1";
+import CartStep from "./CartStep";
 import backIcon from "../../assets/back.svg";
 
 export default function Cart() {
@@ -27,7 +27,9 @@ export default function Cart() {
         </div>
         <div className="mx-auto px-5 lg:px-10 lg:pt-10 xl:max-w-[1320px] xl:px-16 xl:pb-32">
           <div className="mx-auto flex flex-col gap-10 pt-10 md:w-[450px] lg:w-full lg:max-w-[1320px] lg:flex-row lg:justify-between lg:gap-0">
-            <div>{step === 0 ? <Products /> : <CartStep1 />}</div>
+            <div className="w-full">
+              {step === 0 ? <Products /> : <CartStep />}
+            </div>
             <div>{step === 0 ? <Summary /> : <SummaryWithOrder />}</div>
           </div>
         </div>
