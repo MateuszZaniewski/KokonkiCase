@@ -2,7 +2,7 @@ import step3 from "../../assets/step3.svg";
 import arrowDownIcon from "../../assets/arrow-down.svg";
 import arrowUpIcon from "../../assets/arrow-up.svg";
 import { useState } from "react";
-export default function CartStep3() {
+export default function CartStep3({ thirdForm, setThirdForm }) {
   const [open, setOpen] = useState(true);
 
   const SingleMethod = ({ name }) => {

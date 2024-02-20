@@ -5,12 +5,36 @@ import { useEffect, useState } from "react";
 import Select from "react-select";
 import "../../index.css";
 
-export default function CartStep1() {
+export default function CartStep1({ firstForm, setFirstForm }) {
+  console.log(firstForm);
   const [open, setOpen] = useState(true);
   const styles =
     "border-b border-black bg-[#F9F8F9] pb-1 lg:max-w-[427px] outline-none";
-
   const stylesCountry = "bg-[#F9F8F9] pb-1 lg:max-w-[427px] outline-none";
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    const newValue = type === "checkbox" ? checked : value;
+    setFirstForm((prevState) => ({
+      ...prevState,
+      [name]: newValue,
+    }));
+  };
+
+  const handleCountryChange = (e) => {
+    setFirstForm((prevState) => ({
+      ...prevState,
+      country: e.label.slice(5),
+    }));
+    setSelectedCountry(e.target);
+  };
+
+  const handleSameFVAdress = (e) => {
+    setFirstForm((prevState) => ({
+      ...prevState,
+      same: e.target.checked,
+    }));
+  };
 
   const [countries, setCountries] = useState([]);
   const [selectedCountry, setSelectedCountry] = useState({});
@@ -45,32 +69,82 @@ export default function CartStep1() {
       <div className={open ? "block lg:pl-8 lg:pt-5" : "hidden"}>
         <form className="flex flex-col gap-5 text-[16px] placeholder:text-[#554A4A] ">
           <span>Adres doręczenia</span>
-          <input className={styles} placeholder="Imię i Nazwisko"></input>
-          <input className={styles} placeholder="Ulica"></input>
-          <input className={styles} placeholder="Nr domu/mieszkania"></input>
+          <input
+            name="name"
+            value={firstForm.name}
+            onChange={handleChange}
+            className={styles}
+            placeholder="Imię i Nazwisko"
+          ></input>
+          <input
+            name="street"
+            value={firstForm.street}
+            onChange={handleChange}
+            className={styles}
+            placeholder="Ulica"
+          ></input>
+          <input
+            name="house"
+            value={firstForm.house}
+            onChange={handleChange}
+            className={styles}
+            placeholder="Nr domu/mieszkania"
+          ></input>
           <div className="flex justify-between gap-3 lg:max-w-[427px]">
-            <input className={styles} placeholder="Kod pocztowy"></input>
-            <input className={styles} placeholder="Miasto"></input>
+            <input
+              name="postalCode"
+              value={firstForm.postalCode}
+              onChange={handleChange}
+              className={styles}
+              placeholder="Kod pocztowy"
+            ></input>
+            <input
+              name="city"
+              value={firstForm.city}
+              onChange={handleChange}
+              className={styles}
+              placeholder="Miasto"
+            ></input>
           </div>
           <div className="flex items-center gap-1 border-b border-black lg:max-w-[427px]">
-            <input className={stylesCountry} placeholder="Kraj"></input>
             <Select
               options={countries}
               value={selectedCountry}
-              onChange={(selectedOption) => setSelectedCountry(selectedOption)}
-              className="w-full border-none bg-[#F9F8F9] outline-none lg:max-w-[300px]"
-              style="background-color: #F9F8F9"
+              onChange={handleCountryChange}
+              className="lg:max-w-[427px]] w-full border-none bg-[#F9F8F9] outline-none"
+              styles={{
+                control: (provided) => ({
+                  ...provided,
+                  border: "none",
+                  backgroundColor: "#F9F8F9",
+                }),
+              }}
               placeholder="Kraj"
             />
           </div>
-          <input className={styles} placeholder="Telefon"></input>
-          <input className={styles} placeholder="Email"></input>
           <input
+            name="phone"
+            value={firstForm.phone}
+            onChange={handleChange}
+            className={styles}
+            placeholder="Telefon"
+          ></input>
+          <input
+            name="email"
+            value={firstForm.email}
+            onChange={handleChange}
+            className={styles}
+            placeholder="Email"
+          ></input>
+          <input
+            name="suggestions"
+            value={firstForm.suggestions}
+            onChange={handleChange}
             className={styles}
             placeholder="Uwagi dodatkowe (opcjonalnie)"
           ></input>
           <div>
-            <input type="checkbox" />
+            <input name="same" type="checkbox" onChange={handleSameFVAdress} />
             <span className="pl-2">
               Adres do faktury jest taki sam jak adres dostawy
             </span>

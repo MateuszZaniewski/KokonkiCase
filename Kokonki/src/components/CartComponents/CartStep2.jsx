@@ -2,7 +2,7 @@ import step2 from "../../assets/step2.svg";
 import arrowDownIcon from "../../assets/arrow-down.svg";
 import arrowUpIcon from "../../assets/arrow-up.svg";
 import { useState } from "react";
-export default function CartStep2() {
+export default function CartStep2({ secondForm, setSecondForm }) {
   const [open, setOpen] = useState(true);
 
   const SingleOption = ({ courier, price, subtittle }) => {
