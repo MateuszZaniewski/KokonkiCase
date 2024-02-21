@@ -3,27 +3,41 @@ import arrowDownIcon from "../../assets/arrow-down.svg";
 import arrowUpIcon from "../../assets/arrow-up.svg";
 import { useState } from "react";
 export default function CartStep2({ secondForm, setSecondForm }) {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
+  const [selected, setSelected] = useState("");
 
   const SingleOption = ({ courier, price, subtittle }) => {
+    const handleChange = () => {
+      setSecondForm({ courier, price });
+      setSelected(price);
+    };
+
     return (
       <div className="lg:pr-16">
         <div className="flex justify-between">
           <div className="flex items-center gap-1">
-            <input type="radio" className="h-[15px] w-[15px]"></input>
+            <input
+              name="price-radio-button"
+              type="radio"
+              className="h-[15px] w-[15px]"
+              onChange={handleChange}
+              checked={selected === price}
+            ></input>
             <label>{courier}</label>
           </div>
           <span className="font-semibold">{price} zł</span>
         </div>
         <div className="pl-4">
-          <span className=" whitespace-pre text-[#554A4A]">{subtittle}</span>
+          <span className=" whitespace-pre-line text-[#554A4A]">
+            {subtittle}
+          </span>
         </div>
       </div>
     );
   };
 
   return (
-    <div className="border-black bg-[#F9F8F9] lg:mr-28 lg:border-b-2 lg:py-5">
+    <div className="border-b-2 border-black bg-[#F9F8F9] py-5 lg:mr-28">
       <div
         onClick={() => setOpen(!open)}
         className="flex items-center justify-between"
@@ -36,7 +50,7 @@ export default function CartStep2({ secondForm, setSecondForm }) {
           <img src={open ? arrowUpIcon : arrowDownIcon} />
         </div>
       </div>
-      <div className={open ? "block lg:pl-8 lg:pt-5" : "hidden"}>
+      <div className={open ? "block pt-5 md:pl-8" : "hidden"}>
         <form className="flex flex-col gap-5 text-[16px] ">
           <SingleOption
             courier="Poczta Polska odbiór w punkcie"

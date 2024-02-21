@@ -5,7 +5,7 @@ import arrowUpIcon from "../../assets/arrow-up.svg";
 import { useState } from "react";
 import { OrderMiniature } from "./OrderMiniature";
 
-export default function SummaryWithOrder() {
+export default function SummaryWithOrder({ firstForm, secondForm, thirdForm }) {
   const cart = useCartStore((state) => state.cart);
   const [open, setOpen] = useState(false);
   const totalCost = () => {
@@ -17,6 +17,11 @@ export default function SummaryWithOrder() {
     } else {
       return 0;
     }
+  };
+
+  const handlePurchase = () => {
+    console.log("Purchasing in progress...");
+    console.log([firstForm, secondForm, thirdForm]);
   };
 
   if (cart && cart.length > 0) {
@@ -35,14 +40,15 @@ export default function SummaryWithOrder() {
           <span>{totalCost().toFixed(2).split(".").join(",")} zł</span>
         </div>
         <span>z VAT</span>
-        <div className="mx-auto w-[80%] pb-14 pt-9">
+        <div className="mx-auto pb-14 pt-9 xl:w-[80%]">
           <CtaButton
             text="Kupuję i płacę"
             background="bg-[#2A4746]"
             color="text-white"
+            task={handlePurchase}
           />
         </div>
-        <div>
+        <div className="pb-20">
           <div
             onClick={() => setOpen(!open)}
             className="flex justify-between border-b-2 border-black pb-5"

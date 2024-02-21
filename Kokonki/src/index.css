@@ -143,3 +143,14 @@ input::-webkit-search-cancel-button {
   background-color: #f9f8f9;
   border: none;
 }
+
+.react-international-phone-input-container {
+  background-color: #f9f8f9;
+  border: none;
+}
+
+.react-international-phone-input {
+  width: 100%;
+  background-color: #f9f8f9;
+  border-style: none;
+}

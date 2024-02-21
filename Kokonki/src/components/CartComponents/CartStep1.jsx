@@ -3,14 +3,17 @@ import arrowDownIcon from "../../assets/arrow-down.svg";
 import arrowUpIcon from "../../assets/arrow-up.svg";
 import { useEffect, useState } from "react";
 import Select from "react-select";
+import { PhoneInput } from "react-international-phone";
+import "react-international-phone/style.css";
 import "../../index.css";
 
 export default function CartStep1({ firstForm, setFirstForm }) {
-  console.log(firstForm);
   const [open, setOpen] = useState(true);
+  const [countries, setCountries] = useState([]);
+  const [selectedCountry, setSelectedCountry] = useState({});
+  const [phone, setPhone] = useState("");
   const styles =
     "border-b border-black bg-[#F9F8F9] pb-1 lg:max-w-[427px] outline-none";
-  const stylesCountry = "bg-[#F9F8F9] pb-1 lg:max-w-[427px] outline-none";
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -29,15 +32,20 @@ export default function CartStep1({ firstForm, setFirstForm }) {
     setSelectedCountry(e.target);
   };
 
+  const handlePhoneChange = (e) => {
+    setFirstForm((prevState) => ({
+      ...prevState,
+      phone: e,
+    }));
+    setPhone(e);
+  };
+
   const handleSameFVAdress = (e) => {
     setFirstForm((prevState) => ({
       ...prevState,
       same: e.target.checked,
     }));
   };
-
-  const [countries, setCountries] = useState([]);
-  const [selectedCountry, setSelectedCountry] = useState({});
 
   useEffect(() => {
     fetch(
@@ -51,7 +59,7 @@ export default function CartStep1({ firstForm, setFirstForm }) {
   }, []);
 
   return (
-    <div className="border-black bg-[#F9F8F9] lg:mr-28 lg:border-b-2 lg:py-5">
+    <div className="border-b-2 border-black bg-[#F9F8F9] py-5 lg:mr-28">
       <div
         onClick={() => setOpen(!open)}
         className="flex items-center justify-between"
@@ -66,7 +74,7 @@ export default function CartStep1({ firstForm, setFirstForm }) {
           <img src={open ? arrowUpIcon : arrowDownIcon} />
         </div>
       </div>
-      <div className={open ? "block lg:pl-8 lg:pt-5" : "hidden"}>
+      <div className={open ? "block pt-5 md:pl-8" : "hidden"}>
         <form className="flex flex-col gap-5 text-[16px] placeholder:text-[#554A4A] ">
           <span>Adres doręczenia</span>
           <input
@@ -95,14 +103,14 @@ export default function CartStep1({ firstForm, setFirstForm }) {
               name="postalCode"
               value={firstForm.postalCode}
               onChange={handleChange}
-              className={styles}
+              className={`${styles} w-[100%]`}
               placeholder="Kod pocztowy"
             ></input>
             <input
               name="city"
               value={firstForm.city}
               onChange={handleChange}
-              className={styles}
+              className={`${styles} w-[100%]`}
               placeholder="Miasto"
             ></input>
           </div>
@@ -122,13 +130,48 @@ export default function CartStep1({ firstForm, setFirstForm }) {
               placeholder="Kraj"
             />
           </div>
-          <input
-            name="phone"
-            value={firstForm.phone}
-            onChange={handleChange}
-            className={styles}
-            placeholder="Telefon"
-          ></input>
+          <div className="w-full">
+            <PhoneInput
+              style={{
+                width: "100%",
+                maxWidth: "427px",
+                backgroundColor: "#F9F8F9",
+                border: "none",
+                borderBottom: "1px solid black",
+                paddingBottom: "4px",
+              }}
+              inputStyle={{
+                width: "100%",
+                border: "none",
+                backgroundColor: "transparent",
+                outline: "none",
+                fontSize: "16px",
+              }}
+              buttonStyle={{
+                height: "36px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                padding: "0",
+                border:
+                  "1px solid var(--react-international-phone-country-selector-border-color, var(--react-international-phone-border-color, gainsboro))",
+                margin: "0",
+                appearance: "button",
+                WebkitAppearance: "button",
+                backgroundColor: "#F9F8F9", // Changed the background color here
+                cursor: "pointer",
+                textTransform: "none",
+                userSelect: "none",
+              }}
+              buttonContentStyle={{
+                backgroundColor: "#F9F8F9", // Changed the background color here as well
+              }}
+              name="phone"
+              defaultCountry="pl"
+              value={phone}
+              onChange={handlePhoneChange}
+            />
+          </div>
           <input
             name="email"
             value={firstForm.email}

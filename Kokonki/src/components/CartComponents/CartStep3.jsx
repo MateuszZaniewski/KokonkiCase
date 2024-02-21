@@ -3,18 +3,30 @@ import arrowDownIcon from "../../assets/arrow-down.svg";
 import arrowUpIcon from "../../assets/arrow-up.svg";
 import { useState } from "react";
 export default function CartStep3({ thirdForm, setThirdForm }) {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
+  const [selected, setSelected] = useState("");
 
   const SingleMethod = ({ name }) => {
+    const handleChange = () => {
+      setThirdForm({ payForm: name });
+      setSelected(name);
+    };
+
     return (
       <div className="flex items-center gap-1">
-        <input type="radio" className="h-[15px] w-[15px]"></input>
+        <input
+          name="pay-radio-button"
+          type="radio"
+          className="h-[15px] w-[15px]"
+          onChange={handleChange}
+          checked={selected === name}
+        ></input>
         <label>{name}</label>
       </div>
     );
   };
   return (
-    <div className="border-black bg-[#F9F8F9] lg:mr-28 lg:border-b-2 lg:py-5">
+    <div className="border-b-2 border-black bg-[#F9F8F9] py-5 lg:mr-28">
       <div
         onClick={() => setOpen(!open)}
         className="flex items-center justify-between"
@@ -27,7 +39,7 @@ export default function CartStep3({ thirdForm, setThirdForm }) {
           <img src={open ? arrowUpIcon : arrowDownIcon} />
         </div>
       </div>
-      <div className={open ? "block lg:pl-8 lg:pt-5" : "hidden"}>
+      <div className={open ? "block pt-5 md:pl-8" : "hidden"}>
         <form className="flex flex-col gap-5 text-[16px] placeholder:text-[#554A4A] ">
           <SingleMethod name="BLIK / szybki przelew / płatność kartą / PayPO" />
           <SingleMethod name="Przelew" />

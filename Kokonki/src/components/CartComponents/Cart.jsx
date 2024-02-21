@@ -4,13 +4,32 @@ import Summary from "./Summary";
 import SummaryWithOrder from "./SummaryWithOrder";
 import CartStep from "./CartStep";
 import backIcon from "../../assets/back.svg";
+import { useState } from "react";
 
 export default function Cart() {
+  const [firstForm, setFirstForm] = useState({
+    name: "",
+    street: "",
+    house: "",
+    postalCode: "",
+    city: "",
+    country: "",
+    phone: "",
+    email: "",
+    suggestions: "",
+    same: false,
+  });
+  const [secondForm, setSecondForm] = useState({
+    courier: "",
+    price: "",
+  });
+  const [thirdForm, setThirdForm] = useState({
+    payForm: "",
+  });
   const cart = useCartStore((state) => state.cart);
   const step = useCartStore((state) => state.step);
   const prevStep = useCartStore((state) => state.prevStep);
   const resetStep = useCartStore((state) => state.resetStep);
-  console.log(step);
 
   if (cart && cart.length > 0) {
     return (
@@ -26,11 +45,32 @@ export default function Cart() {
           )}
         </div>
         <div className="mx-auto px-5 lg:px-10 lg:pt-10 xl:max-w-[1320px] xl:px-16 xl:pb-32">
-          <div className="mx-auto flex flex-col gap-10 pt-10 md:w-[450px] lg:w-full lg:max-w-[1320px] lg:flex-row lg:justify-between lg:gap-0">
+          <div className="mx-auto flex flex-col gap-10 pt-10 sm:w-[500px] md:w-[550px] lg:w-full lg:max-w-[1320px] lg:flex-row lg:justify-between lg:gap-0">
             <div className="w-full">
-              {step === 0 ? <Products /> : <CartStep />}
+              {step === 0 ? (
+                <Products />
+              ) : (
+                <CartStep
+                  firstForm={firstForm}
+                  setFirstForm={setFirstForm}
+                  secondForm={secondForm}
+                  setSecondForm={setSecondForm}
+                  thirdForm={thirdForm}
+                  setThirdForm={setThirdForm}
+                />
+              )}
             </div>
-            <div>{step === 0 ? <Summary /> : <SummaryWithOrder />}</div>
+            <div>
+              {step === 0 ? (
+                <Summary />
+              ) : (
+                <SummaryWithOrder
+                  firstForm={firstForm}
+                  secondForm={secondForm}
+                  thirdForm={thirdForm}
+                />
+              )}
+            </div>
           </div>
         </div>
       </>
