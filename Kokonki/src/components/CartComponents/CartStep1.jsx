@@ -7,14 +7,19 @@ import { PhoneInput } from "react-international-phone";
 import "react-international-phone/style.css";
 import "../../index.css";
 
-export default function CartStep1({ firstForm, setFirstForm }) {
+export default function CartStep1({
+  firstForm,
+  setFirstForm,
+  firstFormErrors,
+  setFirstFormErrors,
+}) {
   const [open, setOpen] = useState(true);
-  const [countries, setCountries] = useState([]);
+  const [countries, setCountries] = useState(["Poland"]);
   const [selectedCountry, setSelectedCountry] = useState({});
   const [phone, setPhone] = useState("");
-  const styles =
-    "border-b border-black bg-[#F9F8F9] pb-1 lg:max-w-[427px] outline-none";
+  const styles = `border-b border-black bg-[#F9F8F9] pb-1 lg:max-w-[427px] outline-none`;
 
+  console.log(firstFormErrors);
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     const newValue = type === "checkbox" ? checked : value;
@@ -54,7 +59,7 @@ export default function CartStep1({ firstForm, setFirstForm }) {
       .then((response) => response.json())
       .then((data) => {
         setCountries(data.countries);
-        setSelectedCountry(data.userSelectValue);
+        setSelectedCountry(data.userSelectValue.value);
       });
   }, []);
 
@@ -81,21 +86,21 @@ export default function CartStep1({ firstForm, setFirstForm }) {
             name="name"
             value={firstForm.name}
             onChange={handleChange}
-            className={styles}
+            className={`${styles} ${firstFormErrors.nameError ? "border border-red-600 px-1 py-1" : ""}`}
             placeholder="Imię i Nazwisko"
           ></input>
           <input
             name="street"
             value={firstForm.street}
             onChange={handleChange}
-            className={styles}
+            className={`${styles} ${firstFormErrors.streetError ? "border border-red-600 px-1 py-1" : ""}`}
             placeholder="Ulica"
           ></input>
           <input
             name="house"
             value={firstForm.house}
             onChange={handleChange}
-            className={styles}
+            className={`${styles} ${firstFormErrors.houseError ? "border border-red-600 px-1 py-1" : ""}`}
             placeholder="Nr domu/mieszkania"
           ></input>
           <div className="flex justify-between gap-3 lg:max-w-[427px]">
@@ -103,18 +108,20 @@ export default function CartStep1({ firstForm, setFirstForm }) {
               name="postalCode"
               value={firstForm.postalCode}
               onChange={handleChange}
-              className={`${styles} w-[100%]`}
+              className={`${styles} w-[100%] ${firstFormErrors.postalCodeError ? "border border-red-600 px-1 py-1" : ""}`}
               placeholder="Kod pocztowy"
             ></input>
             <input
               name="city"
               value={firstForm.city}
               onChange={handleChange}
-              className={`${styles} w-[100%]`}
+              className={`${styles} w-[100%] ${firstFormErrors.cityError ? "border border-red-600 px-1 py-1" : ""}`}
               placeholder="Miasto"
             ></input>
           </div>
-          <div className="flex items-center gap-1 border-b border-black lg:max-w-[427px]">
+          <div
+            className={`${firstFormErrors.countryError ? "border border-red-600 px-1 py-1" : ""} flex items-center gap-1 border-b border-black lg:max-w-[427px]`}
+          >
             <Select
               options={countries}
               value={selectedCountry}
@@ -125,12 +132,15 @@ export default function CartStep1({ firstForm, setFirstForm }) {
                   ...provided,
                   border: "none",
                   backgroundColor: "#F9F8F9",
+                  padding: 0,
                 }),
               }}
               placeholder="Kraj"
             />
           </div>
-          <div className="w-full">
+          <div
+            className={`${firstFormErrors.phoneError ? "border border-red-600 px-1 py-1" : ""} w-full lg:max-w-[427px]`}
+          >
             <PhoneInput
               style={{
                 width: "100%",
@@ -176,7 +186,7 @@ export default function CartStep1({ firstForm, setFirstForm }) {
             name="email"
             value={firstForm.email}
             onChange={handleChange}
-            className={styles}
+            className={`${styles} ${firstFormErrors.emailError ? "border border-red-600 px-1 py-1" : ""}`}
             placeholder="Email"
           ></input>
           <input

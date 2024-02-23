@@ -26,6 +26,16 @@ export default function Cart() {
   const [thirdForm, setThirdForm] = useState({
     payForm: "",
   });
+  const [firstFormErrors, setFirstFormErrors] = useState({
+    nameError: false,
+    streetError: false,
+    houseError: false,
+    postalCodeError: false,
+    cityError: false,
+    countryError: false,
+    phoneError: false,
+    emailError: false,
+  });
   const cart = useCartStore((state) => state.cart);
   const step = useCartStore((state) => state.step);
   const prevStep = useCartStore((state) => state.prevStep);
@@ -53,6 +63,8 @@ export default function Cart() {
                 <CartStep
                   firstForm={firstForm}
                   setFirstForm={setFirstForm}
+                  firstFormErrors={firstFormErrors}
+                  setFirstFormErrors={setFirstFormErrors}
                   secondForm={secondForm}
                   setSecondForm={setSecondForm}
                   thirdForm={thirdForm}
@@ -66,6 +78,8 @@ export default function Cart() {
               ) : (
                 <SummaryWithOrder
                   firstForm={firstForm}
+                  firstFormErrors={firstFormErrors}
+                  setFirstFormErrors={setFirstFormErrors}
                   secondForm={secondForm}
                   thirdForm={thirdForm}
                 />

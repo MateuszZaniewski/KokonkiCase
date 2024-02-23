@@ -4,8 +4,15 @@ import arrowDownIcon from "../../assets/arrow-down.svg";
 import arrowUpIcon from "../../assets/arrow-up.svg";
 import { useState } from "react";
 import { OrderMiniature } from "./OrderMiniature";
+import { validateForm1 } from "../../helpers/formValidation";
 
-export default function SummaryWithOrder({ firstForm, secondForm, thirdForm }) {
+export default function SummaryWithOrder({
+  firstForm,
+  firstFormErrors,
+  setFirstFormErrors,
+  secondForm,
+  thirdForm,
+}) {
   const cart = useCartStore((state) => state.cart);
   const [open, setOpen] = useState(false);
   const totalCost = () => {
@@ -21,7 +28,8 @@ export default function SummaryWithOrder({ firstForm, secondForm, thirdForm }) {
 
   const handlePurchase = () => {
     console.log("Purchasing in progress...");
-    console.log([firstForm, secondForm, thirdForm]);
+    const response = validateForm1(firstForm);
+    setFirstFormErrors(response);
   };
 
   if (cart && cart.length > 0) {

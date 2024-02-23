@@ -154,3 +154,7 @@ input::-webkit-search-cancel-button {
   background-color: #f9f8f9;
   border-style: none;
 }
+
+.css-art2ul-ValueContainer2 {
+  padding: 0 !important; /* Override padding */
+}
