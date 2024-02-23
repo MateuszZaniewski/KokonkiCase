@@ -36,6 +36,13 @@ export default function Cart() {
     phoneError: false,
     emailError: false,
   });
+  const [secondFormErrors, setSecondFormErrors] = useState({
+    error: false,
+  });
+  const [thirdFormErrors, setThirdFormErrors] = useState({
+    error: false,
+  });
+
   const cart = useCartStore((state) => state.cart);
   const step = useCartStore((state) => state.step);
   const prevStep = useCartStore((state) => state.prevStep);
@@ -67,8 +74,12 @@ export default function Cart() {
                   setFirstFormErrors={setFirstFormErrors}
                   secondForm={secondForm}
                   setSecondForm={setSecondForm}
+                  secondFormErrors={secondFormErrors}
+                  setSecondFormErrors={setSecondFormErrors}
                   thirdForm={thirdForm}
                   setThirdForm={setThirdForm}
+                  thirdFormErrors={thirdFormErrors}
+                  setThirdFormErrors={setThirdFormErrors}
                 />
               )}
             </div>
@@ -81,7 +92,11 @@ export default function Cart() {
                   firstFormErrors={firstFormErrors}
                   setFirstFormErrors={setFirstFormErrors}
                   secondForm={secondForm}
+                  secondFormErrors={secondFormErrors}
+                  setSecondFormErrors={setSecondFormErrors}
                   thirdForm={thirdForm}
+                  thirdFormErrors={thirdFormErrors}
+                  setThirdFormErrors={setThirdFormErrors}
                 />
               )}
             </div>

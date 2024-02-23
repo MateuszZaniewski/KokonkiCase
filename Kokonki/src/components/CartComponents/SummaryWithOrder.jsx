@@ -4,17 +4,28 @@ import arrowDownIcon from "../../assets/arrow-down.svg";
 import arrowUpIcon from "../../assets/arrow-up.svg";
 import { useState } from "react";
 import { OrderMiniature } from "./OrderMiniature";
-import { validateForm1 } from "../../helpers/formValidation";
+import {
+  validateForm1,
+  validateForm2,
+  validateForm3,
+} from "../../helpers/formValidation";
+import SuccessPurchase from "./SuccessPurchase";
 
 export default function SummaryWithOrder({
   firstForm,
   firstFormErrors,
   setFirstFormErrors,
   secondForm,
+  secondFormErrors,
+  setSecondFormErrors,
   thirdForm,
+  thirdFormErrors,
+  setThirdFormErrors,
 }) {
   const cart = useCartStore((state) => state.cart);
   const [open, setOpen] = useState(false);
+  const [errorMsg, setErrorMsg] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
   const totalCost = () => {
     if (cart && cart.length > 0) {
       const totalCost = cart.reduce((acc, currentItem) => {
@@ -26,10 +37,39 @@ export default function SummaryWithOrder({
     }
   };
 
+  const Error = ({ first, second, third }) => {
+    if (Object.values(first).some((error) => error) || second || third) {
+      return (
+        <div className="pb-5 text-red-600">
+          <span className="text-[20px]">
+            Formularz posiada nieuzupełnione elementy. Proszę uzupełij dane.
+          </span>
+        </div>
+      );
+    }
+  };
+
   const handlePurchase = () => {
     console.log("Purchasing in progress...");
     const response = validateForm1(firstForm);
     setFirstFormErrors(response);
+    const secondResponse = validateForm2(secondForm);
+    setSecondFormErrors(secondResponse);
+    const thirdResponse = validateForm3(thirdForm);
+    setThirdFormErrors(thirdResponse);
+
+    if (
+      Object.values(response).some((error) => error) ||
+      Object.values(secondResponse).some((error) => error) ||
+      Object.values(thirdResponse).some((error) => error)
+    ) {
+      setErrorMsg(true);
+      setTimeout(() => {
+        setErrorMsg(false);
+      }, 5000);
+    } else {
+      setShowSuccess(true);
+    }
   };
 
   if (cart && cart.length > 0) {
@@ -56,6 +96,13 @@ export default function SummaryWithOrder({
             task={handlePurchase}
           />
         </div>
+        {errorMsg && (
+          <Error
+            first={firstFormErrors}
+            second={secondFormErrors}
+            third={thirdFormErrors}
+          />
+        )}
         <div className="pb-20">
           <div
             onClick={() => setOpen(!open)}
@@ -68,6 +115,14 @@ export default function SummaryWithOrder({
           </div>
           {open ? <OrderMiniature /> : null}
         </div>
+        {showSuccess && (
+          <div className="h-30 w-full border border-black">
+            <SuccessPurchase
+              showSuccess={showSuccess}
+              setShowSuccess={setShowSuccess}
+            />
+          </div>
+        )}
       </div>
     );
   }

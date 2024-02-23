@@ -7,7 +7,11 @@ export default function CartStep({
   firstFormErrors,
   setFirstFormErrors,
   secondForm,
+  secondFormErrors,
+  setSecondFormErrors,
   thirdForm,
+  thirdFormErrors,
+  setThirdFormErrors,
   setFirstForm,
   setSecondForm,
   setThirdForm,
@@ -20,8 +24,18 @@ export default function CartStep({
         firstFormErrors={firstFormErrors}
         setFirstFormErrors={setFirstFormErrors}
       />
-      <CartStep2 secondForm={secondForm} setSecondForm={setSecondForm} />
-      <CartStep3 thirdForm={thirdForm} setThirdForm={setThirdForm} />
+      <CartStep2
+        secondForm={secondForm}
+        setSecondForm={setSecondForm}
+        secondFormErrors={secondFormErrors}
+        setSecondFormErrors={setSecondFormErrors}
+      />
+      <CartStep3
+        thirdForm={thirdForm}
+        setThirdForm={setThirdForm}
+        thirdFormErrors={thirdFormErrors}
+        setThirdFormErrors={setThirdFormErrors}
+      />
     </div>
   );
 }

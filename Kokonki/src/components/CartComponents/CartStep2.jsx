@@ -2,7 +2,12 @@ import step2 from "../../assets/step2.svg";
 import arrowDownIcon from "../../assets/arrow-down.svg";
 import arrowUpIcon from "../../assets/arrow-up.svg";
 import { useState } from "react";
-export default function CartStep2({ secondForm, setSecondForm }) {
+export default function CartStep2({
+  secondForm,
+  setSecondForm,
+  secondFormErrors,
+  setSecondFormErrors,
+}) {
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState("");
 

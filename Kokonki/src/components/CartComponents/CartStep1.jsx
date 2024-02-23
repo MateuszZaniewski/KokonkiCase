@@ -19,7 +19,6 @@ export default function CartStep1({
   const [phone, setPhone] = useState("");
   const styles = `border-b border-black bg-[#F9F8F9] pb-1 lg:max-w-[427px] outline-none`;
 
-  console.log(firstFormErrors);
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     const newValue = type === "checkbox" ? checked : value;

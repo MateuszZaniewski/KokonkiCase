@@ -39,3 +39,21 @@ export const validateForm1 = (form) => {
 
   return error.length === 0 ? false : error;
 };
+
+export const validateForm2 = (form) => {
+  let error = false;
+  if (form.courier.length < 1 || form.price.length < 1) {
+    error = true;
+  }
+
+  return error ? true : false;
+};
+
+export const validateForm3 = (form) => {
+  let error = false;
+  if (form.payForm.length < 1) {
+    error = true;
+  }
+
+  return error ? true : false;
+};
